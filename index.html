@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0863bd"><title>NS360 | ระบบประเมินผลการปฏิบัติงาน · External Fast</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- โหลด Excel library เฉพาะเมื่อผู้ใช้กดนำเข้า/ดาวน์โหลดเทมเพลต -->
+<style>
+:root{--blue:#0863bd;--navy:#072d58;--deep:#0b4178;--gold:#ffcf38;--paper:#f3f7fd;--line:#dce6f2;--text:#1c314a;--mute:#69819c;--white:#fff;--danger:#de4a53;--green:#16855f;--shadow:0 16px 45px rgba(12,49,89,.09)}*{box-sizing:border-box}body{margin:0;color:var(--text);background:var(--paper);font-family:Prompt,sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}h1,h2,h3,p{margin:0}a{color:var(--blue)}.hidden{display:none!important}#login-view{min-height:100dvh;display:grid;place-items:center;padding:25px;background:radial-gradient(circle at 10% 10%,#d8eaff 0,transparent 38%),linear-gradient(135deg,#e8f2ff 0%,#f8fbff 55%,#fff7d8 100%)}.login-card{width:min(100%,440px);padding:32px;background:#fff;border:1px solid #e2ecfa;border-radius:26px;box-shadow:0 25px 65px #174f8a22}.login-logo{display:block;width:130px;height:130px;object-fit:contain;margin:0 auto 10px}.login-card h1{text-align:center;font-size:24px;color:var(--navy);line-height:1.4}.login-card .sub{text-align:center;color:var(--mute);margin:7px 0 26px}.field{display:flex;flex-direction:column;gap:7px;margin:0 0 14px}.field>span,.label{font-weight:500;color:var(--deep)}.input,select,textarea{border:1px solid #d7e3f0;background:#fff;color:var(--text);border-radius:12px;min-height:45px;width:100%;padding:10px 13px;outline:none}textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#4fa4fa;box-shadow:0 0 0 3px #4fa4fa25}.password-wrap{position:relative}.password-wrap input{padding-right:48px}.eye{border:0;background:none;position:absolute;right:10px;top:7px;width:34px;height:31px;color:var(--mute);font-size:19px}.btn{border:0;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:500;padding:11px 17px;min-height:43px;border-radius:12px;white-space:nowrap}.btn:hover{filter:brightness(.96)}.btn.gold{background:var(--gold);color:var(--navy)}.btn.soft{background:#e7f1fe;color:var(--deep)}.btn.gray{background:#ecf1f7;color:var(--deep)}.btn.red{background:#fff0f0;color:#c63840}.btn.small{padding:7px 11px;min-height:33px;font-size:12px;border-radius:9px}.btn.full{width:100%}.remember{display:flex;align-items:center;gap:8px;color:var(--mute);margin:2px 0 22px}.remember input,.checklist input{accent-color:var(--blue);width:18px;height:18px}.login-foot{text-align:center;color:var(--mute);font-size:12px;margin-top:20px}#shell{display:flex;min-height:100dvh}.side{width:258px;position:fixed;inset:0 auto 0 0;background:linear-gradient(165deg,#074781,#052a55);padding:20px 14px;color:#fff;z-index:20;overflow:auto}.side-brand{text-align:center;padding:10px 7px 20px;border-bottom:1px solid #ffffff33;margin-bottom:18px}.side-brand img{width:73px;height:73px;object-fit:contain}.side-brand strong{display:block;font-size:20px;letter-spacing:.5px}.side-brand small{color:#c3dafa}.nav{display:flex;flex-direction:column;gap:5px}.nav button{background:none;border:0;text-align:left;padding:12px 14px;border-radius:12px;color:#d8eaff;display:flex;gap:11px;align-items:center;font-size:14px;width:100%}.nav button.active{background:var(--gold);color:var(--navy);font-weight:600}.nav button:hover:not(.active){background:#ffffff18}.nav .ico{font-size:19px;width:25px;text-align:center}.side-footer{padding:20px 8px 0;color:#b6d3f5;font-size:11px}.layout{margin-left:258px;min-width:0;flex:1}.top{height:78px;position:sticky;top:0;z-index:15;background:#ffffffed;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 29px;display:flex;align-items:center;justify-content:space-between;gap:8px}.top-left,.top-right{display:flex;align-items:center;gap:12px}.top-logo{width:49px;height:49px;object-fit:contain}.top-title{font-size:17px;font-weight:700;color:var(--navy)}.top-sub{font-size:12px;color:var(--mute)}.pill{font-size:11px;padding:5px 10px;border-radius:30px;background:#e8f2ff;color:#165898;display:inline-block}.avatar{width:39px;height:39px;display:grid;place-items:center;background:var(--gold);color:var(--navy);border-radius:12px;font-size:20px}.hamburger{display:none;background:transparent;border:0;color:var(--navy);font-size:24px}.content{padding:28px;max-width:1520px;margin:0 auto}.page-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:24px;flex-wrap:wrap}.eyebrow{color:var(--blue);font-size:12px;letter-spacing:1px;font-weight:600}.page-head h1{font-size:25px;color:var(--navy)}.muted{color:var(--mute)}.card{background:#fff;border:1px solid #e3ebf6;border-radius:19px;box-shadow:var(--shadow);padding:22px;margin-bottom:18px}.card h2{font-size:17px;margin-bottom:14px;color:var(--navy)}.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:12px}.stat{min-width:0;padding:22px;border-radius:17px;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line);position:relative;overflow:hidden}.stat:after{content:'';position:absolute;width:91px;height:91px;border-radius:50%;right:-25px;top:-25px;background:#e8f3ff}.stat.pos:after{background:#e8faf4}.stat.neg:after{background:#fff1ef}.stat .big{font-size:31px;font-weight:700;line-height:1.5;color:var(--deep)}.stat small{color:var(--mute)}.stat b{font-size:13px}.stat.pos .big{color:var(--green)}.stat.neg .big{color:var(--danger)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.space{justify-content:space-between}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid #dbe5f1;border-radius:11px;padding:10px 15px;background:#fff;color:var(--deep)}.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;text-align:left;min-width:620px;background:#fff}th,td{padding:12px 13px;border-bottom:1px solid #e9eff6;vertical-align:top}th{background:#eef5fd;color:#1c4f83;font-size:12px;font-weight:600}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#f9fcff}.status{display:inline-block;border-radius:30px;padding:4px 9px;font-size:11px;background:#edf4ff;color:#315b91}.status.pass{background:#e4f8ee;color:#18744b}.status.fail{background:#feecec;color:#a9232f}.status.wait{background:#fff4d5;color:#976713}.empty{padding:35px 16px;text-align:center;color:var(--mute);background:#f9fbff;border-radius:12px}.checklist{display:flex;flex-direction:column;gap:3px;max-height:380px;overflow:auto}.checklist label{display:flex;gap:10px;align-items:center;padding:10px;border-bottom:1px solid #edf2f7;cursor:pointer}.checklist label:hover{background:#f6faff}.scoreplus{color:var(--green);font-weight:700}.scoreminus{color:var(--danger);font-weight:700}.tag{background:#edf5fe;color:#125a9c;border-radius:8px;padding:5px 10px;font-size:12px;display:inline-block;margin:2px}.filter-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.filter-row>*{flex:1;min-width:140px}.filter-row .btn{flex:0;min-width:auto}.alert{border:1px solid #ffe5ad;background:#fff9e5;color:#7b5511;padding:12px;border-radius:11px;margin:12px 0}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.photo-grid img{width:100%;height:150px;object-fit:cover;border-radius:12px}.line{height:1px;background:var(--line);margin:18px 0}.modal-wrap{position:fixed;inset:0;background:#0d284b93;display:grid;place-items:center;z-index:60;padding:12px}.modal{width:min(100%,700px);max-height:92dvh;overflow:auto;background:#fff;padding:24px;border-radius:19px;box-shadow:0 30px 80px #0003}.modal-head{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:17px}.modal-head h2{font-size:19px;color:var(--navy)}.close{border:none;background:#f0f4f9;border-radius:9px;width:34px;height:34px;font-size:20px}.toast{position:fixed;bottom:20px;right:20px;z-index:90;background:#123e66;color:#fff;border-radius:12px;padding:12px 17px;box-shadow:var(--shadow);max-width:340px}.busy{position:fixed;inset:0;background:#ffffffbb;z-index:85;display:grid;place-items:center;color:var(--deep);font-weight:600}.spin{width:34px;height:34px;border-radius:50%;border:4px solid #bdd8f5;border-top-color:var(--blue);animation:spin 1s linear infinite;margin:0 auto 12px}@keyframes spin{to{transform:rotate(360deg)}}.report-sheet{font-family:Sarabun,sans-serif;max-width:794px;margin:16px auto;background:#fff;padding:28px;border:1px solid #ddd;color:#111;min-height:1050px}.report-sheet .r-head{text-align:center}.report-sheet .r-head img{width:75px;height:75px;object-fit:contain}.report-sheet .r-head h2{font-size:19px;line-height:1.45}.report-sheet table{font-family:Sarabun,sans-serif;min-width:0;font-size:13px}.report-sheet th,.report-sheet td{border:1px solid #333;padding:5px 8px}.report-sheet th{background:#edf1f5;color:#111}.report-sheet .r-meta{font-size:14px;margin:14px 0}.score-total{font-weight:700;text-align:right;padding:12px;border-bottom:2px solid #222}.rating{text-align:center;border:1px solid #888;padding:12px;margin-top:18px}.report-sheet.report-individual .r-num{text-align:center!important;vertical-align:middle}.report-sheet.report-individual .report-category td{background:#edf1f5;font-weight:700;text-align:left}.report-sheet.report-individual .r-empty{text-align:center;color:#666}.report-sheet.report-individual .score-total{text-align:center}.report-sheet.report-overview th:first-child,.report-sheet.report-overview td:first-child,.report-sheet.report-overview th:nth-child(4),.report-sheet.report-overview td:nth-child(4){text-align:center}.sidebar-backdrop{display:none}#print-root{display:none}.mobile-only{display:none}
+@media(max-width:1100px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.top-sub{display:none}}@media(max-width:780px){.side{transform:translateX(-101%);transition:transform .2s}.side.open{transform:translateX(0)}.sidebar-backdrop.open{display:block;position:fixed;inset:0;background:#0005;z-index:19}.layout{margin-left:0}.hamburger{display:block}.top{height:66px;padding:7px 14px}.top-logo{width:37px;height:37px}.top-title{font-size:13px}.top-right .pill{display:none}.top-sub{display:none}.content{padding:18px 12px}.page-head h1{font-size:21px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stat{padding:13px}.stat .big{font-size:24px}.stat b{font-size:11px}.grid2,.grid3{grid-template-columns:1fr}.card{padding:16px;border-radius:15px}.photo-grid img{height:105px}.mobile-only{display:block}.filter-row>*{min-width:100%}.filter-row .btn{width:100%}.report-sheet{padding:16px}.modal{padding:17px}.login-card{padding:23px}}@media print{@page{size:A4 portrait;margin:13mm}body{background:#fff!important;color:#000!important}#shell,#login-view,#modal-layer,#date-popover,#toaster,#busy-layer{display:none!important}#print-root{display:block!important}.report-sheet{width:100%;max-width:none;min-height:auto;border:0;margin:0;padding:0;box-shadow:none;break-after:page;page-break-after:always}.report-sheet:last-child{break-after:auto;page-break-after:auto}.report-sheet table{width:100%}.report-sheet th,.report-sheet td{padding:4px 6px}.report-sheet tr{break-inside:avoid}}
+
+/* v4: ตัวเลือกวันที่ พ.ศ. และรายการสิทธิ์แบบหลายบุคคล */
+.rights-checklist{max-height:350px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.rights-checklist label{display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid #edf2f7;cursor:pointer}
+.rights-checklist label:hover{background:#f4f9ff}
+.rights-checklist input{width:18px;height:18px;accent-color:var(--blue)}
+.rights-selected{font-size:12px;color:var(--deep);margin:12px 0}
+.date-entry{display:flex;gap:7px;align-items:stretch}
+.date-entry .input{min-width:0;flex:1}
+.date-entry button{min-width:45px;font-size:18px}
+.date-hint{font-size:11px;color:var(--mute)}
+.date-pop-bg{position:fixed;inset:0;background:#0a214c75;z-index:97;display:grid;place-items:center;padding:14px}
+.date-pop{max-width:370px;width:100%;background:#fff;border:1px solid var(--line);border-radius:19px;padding:17px;box-shadow:0 18px 65px #092a4c4c}
+.date-pop-header{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:10px}
+.date-pop-week,.date-pop-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;text-align:center}
+.date-pop-week span{font-size:12px;color:var(--mute);padding:7px 1px}
+.date-pop-days button{border:0;border-radius:8px;background:#f1f6ff;color:var(--deep);height:38px;padding:2px;font-size:13px}
+.date-pop-days button:hover,.date-pop-days button.selected{background:var(--blue);color:#fff}
+.date-pop-days button.today:not(.selected){outline:2px solid var(--gold)}
+.date-pop-days .blank{height:38px}
+.date-pop-actions{margin-top:12px;display:flex;justify-content:space-between;gap:8px}
+@media(max-width:780px){.date-pop{padding:13px}.date-pop-days button{height:40px}}
+
+/* v13: เลือกคาบสอนแทนหลายคาบและขั้นตอนอนุมัติ */
+.sub-periods{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px;margin:8px 0}
+.sub-periods label{display:flex;gap:9px;align-items:center;border:1px solid #d7e3f1;border-radius:11px;padding:11px;cursor:pointer;background:#f9fbfe}
+.sub-periods label:has(input:checked){border-color:#2784d7;background:#eaf4ff}
+.sub-periods input{width:18px;height:18px;accent-color:var(--blue)}
+.sub-score-hint{border:1px solid #b6d8f4;background:#eef7ff;border-radius:12px;padding:12px 14px;margin:10px 0;line-height:1.75}
+.sub-history-status{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* v8: ประวัติการสอนแทน — แก้ไข / ลบ อย่างชัดเจน */
+.grid2>.card{min-width:0}
+.grid2 .table-wrap{max-width:100%}
+.sub-history-actions{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.sub-history-actions .btn{white-space:nowrap;min-width:70px}
+.sub-edit-banner{background:#fff6d7;border:1px solid #f4d66a;color:#5d4811;padding:12px 14px;border-radius:12px;margin-bottom:13px;font-size:13px;line-height:1.7}
+@media(max-width:780px){.sub-history-actions .btn{min-width:68px}.sub-history-actions{gap:6px}}
+/* v11: รายงานผลงาน 2 ประเภทและภาพตัวอย่างหลักฐานรางวัล */
+.work-kind-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}
+.work-kind-tabs .tab{flex:1;min-width:180px;white-space:normal;line-height:1.5}
+.award-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px}
+.award-preview figure{margin:0;background:#edf5fd;border:1px solid #d1e2f5;border-radius:11px;overflow:hidden;min-width:0}
+.award-preview img{width:100%;height:122px;object-fit:cover;display:block}
+.award-preview figcaption{font-size:11px;padding:5px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.award-points{padding:11px 13px;background:#edf8ff;border-left:4px solid #126cba;border-radius:8px;color:#16456e;margin:10px 0}
+.work-form-panel[hidden]{display:none!important}
+@media(max-width:520px){.award-preview{grid-template-columns:repeat(2,minmax(0,1fr))}.award-preview img{height:112px}}
+/* v15 ชั้น/ห้องและคาบของวันเดียวกัน */
+.sub-room-group{padding:10px 12px;border:1px solid #d5e5f5;background:#f5faff;border-radius:11px;margin-bottom:9px}
+.sub-room-group>b{display:block;margin-bottom:8px;color:#185a8b}
+.sub-room-group .sub-periods{display:flex;flex-wrap:wrap;gap:8px;max-height:none}
+.sub-room-group .sub-periods label{min-width:85px}
+#sub-period-list{display:block}
+@media(max-width:620px){.sub-room-group{min-width:0}.sub-room-group .sub-periods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.sub-room-group .sub-periods label{min-width:0;padding:9px}}
+
+/* v17 - กรองรายวิชาของผู้เข้าสู่ระบบตามวันที่สอนแทน */
+.sub-proof-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:9px;margin:9px 0}
+.sub-proof-preview figure{margin:0;border:1px solid #c9dfed;background:#f2f8ff;border-radius:10px;overflow:hidden;min-width:0}
+.sub-proof-preview img{width:100%;height:115px;object-fit:cover;display:block}
+.sub-proof-preview figcaption{padding:5px 7px;font-size:11px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.sub-evidence-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin:10px 0}
+.sub-evidence-grid a{display:block;border:1px solid #caddec;border-radius:10px;overflow:hidden;background:#edf5fd}
+.sub-evidence-grid img{display:block;width:100%;height:120px;object-fit:cover}
+.sub-evidence-grid small{display:block;padding:4px 6px;font-size:11px}
+.sub-reason{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:520px){.sub-proof-preview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* v19 activity attendance and daily duties */
+.duty-check{display:flex;flex-wrap:wrap;gap:10px;margin:9px 0 16px}
+.duty-check label{background:#f1f7ff;border:1px solid #cadcef;padding:9px 13px;border-radius:11px;display:flex;gap:7px;align-items:center}
+.duty-table select{min-width:126px;width:100%;padding:7px;border:1px solid #d0dce8;border-radius:8px;background:white;color:#123e66}
+.duty-table td{vertical-align:middle}
+.duty-roster-list{max-height:345px;overflow:auto;border:1px solid #d5e1ed;border-radius:12px}
+.duty-roster-list label{padding:10px;display:flex;gap:12px;align-items:center;border-bottom:1px solid #e8edf4}
+@media(max-width:600px){.duty-table th,.duty-table td{font-size:12px;padding:9px 5px}.duty-table select{min-width:119px}}
+.roster-import-info{overflow-wrap:anywhere}@media(max-width:600px){.duty-roster-list{max-height:280px}.duty-check{display:grid;grid-template-columns:1fr 1fr}.duty-check label{min-width:0;font-size:13px}}
+</style></head><body>
+<div id="login-view"><section class="login-card"><img class="login-logo" src="https://www.ns.ac.th/wp-content/uploads/2024/12/cropped-logo-sq.png" alt="ตราโรงเรียนนราสิกขาลัย"><div class="eyebrow" style="text-align:center">NARASIKKHALAI SCHOOL</div><h1>ระบบประเมินผล 360 องศา</h1><p class="sub">การปฏิบัติงานข้าราชการครูและบุคลากรทางการศึกษา</p><form id="login-form"><label class="field"><span>ชื่อผู้ใช้</span><input id="login-user" class="input" autocomplete="username" required placeholder="กรอกชื่อผู้ใช้"></label><label class="field"><span>รหัสผ่าน</span><div class="password-wrap"><input id="login-pass" class="input" type="password" autocomplete="current-password" required placeholder="กรอกรหัสผ่าน"><button type="button" class="eye" onclick="NS.togglePassword('login-pass',this)" title="แสดง/ซ่อนรหัสผ่าน">◉</button></div></label><label class="remember"><input type="checkbox" id="remember-user" checked> จำชื่อผู้ใช้และสถานะเข้าสู่ระบบบนอุปกรณ์นี้</label><button class="btn gold full" type="submit">เข้าสู่ระบบ →</button></form><div class="login-foot">โรงเรียนนราสิกขาลัย · NS360</div></section></div>
+<div id="shell" class="hidden"><div id="backdrop" class="sidebar-backdrop" onclick="NS.menu(false)"></div><aside id="sidebar" class="side"><div class="side-brand"><img src="https://www.ns.ac.th/wp-content/uploads/2024/12/cropped-logo-sq.png" alt="ตราโรงเรียน"><strong>NS360</strong><small>ระบบประเมินผลการปฏิบัติงาน</small></div><nav id="nav" class="nav"></nav><div class="side-footer">© โรงเรียนนราสิกขาลัย</div></aside><div class="layout"><header class="top"><div class="top-left"><button class="hamburger" onclick="NS.menu(true)" aria-label="เปิดเมนู">☰</button><img class="top-logo" src="https://www.ns.ac.th/wp-content/uploads/2024/12/cropped-logo-sq.png" alt="โลโก้"><div><div class="top-title">โรงเรียนนราสิกขาลัย</div><div class="top-sub">ระบบประเมินผลการปฏิบัติงาน 360°</div></div></div><div class="top-right"><span id="role-pill" class="pill"></span><span class="avatar">👤</span><button class="btn gray small" onclick="NS.logout()">ออกจากระบบ</button></div></header><main class="content" id="main"></main></div></div>
+<div id="modal-layer"></div><div id="date-popover"></div><div id="toaster"></div><div id="busy-layer"></div><div id="print-root"></div>
+<script>
+'use strict';
+const API_URL='https://script.google.com/macros/s/AKfycbzo3-Qfdq2HjXqSWdHY-2Rn9dRJ7lukqiHI_ZxID4vuE8emWHZ_ERIA0s6NVvDAIbS3/exec';
+const LOGO='https://www.ns.ac.th/wp-content/uploads/2024/12/cropped-logo-sq.png';
+const S={token:'',data:null,lastServerMs:null,lastPerf:null,_scheduleLoaded:false,_scheduleBusy:false,page:'home',tab:'plus',scoreTab:'pending',adminTab:'rights',reportType:'individual',reportGroup:'',reportSelected:new Set(),group:'',teacherSearch:'',selectedTeachers:new Set(),selectedCriteria:new Set(),subId:'',periodInputs:{},assignmentGroup:'',assignmentSearch:'',assignmentSelected:new Set(),assignmentCriteria:new Set(),rightsGroup:'',rightsSearch:'',rightsSelected:new Set(),subSearch:'',subRooms:new Set(),subSlots:new Set(),subTeacherGroup:'',subTeacherUsername:'',subProofPreviewUrls:[],criteriaSubTab:'criteria',workTab:'training',awardPreviewUrls:[],busy:false,dutyTab:'flag',dutyDate:'',dutyData:null,dutyTypes:new Set(['รับนักเรียนหน้าประตู เวลา 07.30 น.']),rosterDay:'จันทร์',rosterType:'รับนักเรียนหน้าประตู เวลา 07.30 น.',rosterGroup:'',rosterSearch:'',rosterSelected:new Set()};
+const $=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),attr=esc;
+// Fast mode: เปิดหน้า Index.html จาก Apps Script เพื่อใช้ native RPC (ไม่ผ่าน JSONP)
+const NS_NATIVE=!!(window.google&&google.script&&google.script.run);
+function api(action,data={}){
+ const body={...data,...(S.token?{token:S.token}:{})};
+ if(NS_NATIVE){
+  return new Promise((resolve,reject)=>{
+   google.script.run.withSuccessHandler(ans=>{if(typeof ans?.ms==='number'){S.lastServerMs=ans.ms;S.lastPerf=ans.perf||null;console.debug('[NS360] '+action+': '+ans.ms+' ms (server)',ans.perf||'');}ans&&ans.ok?resolve(ans.data):reject(Error(ans?.error||'ระบบไม่ตอบกลับ'))})
+     .withFailureHandler(e=>reject(Error(e?.message||'เชื่อมต่อ Apps Script ไม่สำเร็จ')))
+     .apiRPC(action,body);
+  });
+ }
+ // โฮสต์ภายนอก: เก็บคำขอที่ซ้ำกันในช่วงกำลังโหลด และจำกัดคำขอพร้อมกัน
+ return externalJSONP(action,body);
+
+}
+// JSONP แบบจำกัด concurrent requests: ลด burst ที่ทำให้ Apps Script รอคิว
+const NS_JSONP_LIMIT=3;
+const NS_JSONP_READS=new Set(['ping','init','readScores','listSchedule','getDutyData','readDutyRoster','readPermissions']);
+const NS_JSONP_INFLIGHT=new Map();
+const NS_JSONP_QUEUE=[];
+let NS_JSONP_RUNNING=0;
+function pumpJSONP(){
+ while(NS_JSONP_RUNNING<NS_JSONP_LIMIT&&NS_JSONP_QUEUE.length){
+  const job=NS_JSONP_QUEUE.shift();NS_JSONP_RUNNING++;
+  sendJSONP(job.action,job.body).then(job.resolve,job.reject).finally(()=>{NS_JSONP_RUNNING--;pumpJSONP()});
+ }
+}
+function externalJSONP(action,body){
+ const fingerprint=NS_JSONP_READS.has(action)?action+':'+JSON.stringify(body):null;
+ if(fingerprint&&NS_JSONP_INFLIGHT.has(fingerprint))return NS_JSONP_INFLIGHT.get(fingerprint);
+ const request=new Promise((resolve,reject)=>{NS_JSONP_QUEUE.push({action,body,resolve,reject});pumpJSONP()});
+ if(fingerprint){NS_JSONP_INFLIGHT.set(fingerprint,request);request.then(()=>NS_JSONP_INFLIGHT.delete(fingerprint),()=>NS_JSONP_INFLIGHT.delete(fingerprint));}
+ return request;
+}
+function sendJSONP(action,body){
+ return new Promise((resolve,reject)=>{
+  const callback='NSCB_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  const script=document.createElement('script');
+  const start=performance.now();let completed=false;
+  const timer=setTimeout(()=>finish(Error('เซิร์ฟเวอร์ตอบสนองช้าเกินไป กรุณาตรวจการเชื่อมต่อแล้วลองอีกครั้ง')),60000);
+  function finish(error,data){
+   if(completed)return;completed=true;
+   clearTimeout(timer);try{delete window[callback];script.remove()}catch(_){ }
+   S.lastRttMs=Math.round(performance.now()-start);S.lastServerMs=null;S.lastPerf=null;
+   error?reject(error):resolve(data);
+  }
+  window[callback]=answer=>answer?.ok?finish(null,answer.data):finish(Error(answer?.error||'ระบบไม่ตอบกลับ'));
+  script.onerror=()=>finish(Error('เชื่อมต่อ Google Apps Script ไม่สำเร็จ กรุณาตรวจ URL และการ Deploy'));
+  const url=new URL(API_URL);
+  url.searchParams.set('action',action);url.searchParams.set('callback',callback);
+  url.searchParams.set('data',JSON.stringify(body));
+  script.src=url.toString();script.async=true;
+  document.head.appendChild(script);
+ });
+}
+// ใช้เฉพาะเมื่อเปิดเมนูนำเข้า/ส่งออก Excel ทำให้หน้าเข้าสู่ระบบโหลดเร็วขึ้น
+let NS_XLSX_PROMISE=null;
+function ensureExcelLibrary(){
+ if(window.XLSX)return Promise.resolve(window.XLSX);
+ if(NS_XLSX_PROMISE)return NS_XLSX_PROMISE;
+ NS_XLSX_PROMISE=new Promise((resolve,reject)=>{
+  const script=document.createElement('script');
+  script.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+  script.async=true;
+  script.onload=()=>window.XLSX?resolve(window.XLSX):reject(Error('ไม่สามารถเริ่มเครื่องมือ Excel ได้'));
+  script.onerror=()=>reject(Error('โหลดเครื่องมือ Excel ไม่สำเร็จ'));
+  document.head.appendChild(script);
+ }).catch(err=>{NS_XLSX_PROMISE=null;throw err});
+ return NS_XLSX_PROMISE;
+}
+async function digest(text){if(!crypto.subtle)throw Error('กรุณาเปิดเว็บไซต์ผ่าน HTTPS');let b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+const NS={};window.NS=NS;
+NS.togglePassword=(id,btn)=>{const i=$(id);i.type=i.type==='password'?'text':'password';btn.textContent=i.type==='text'?'◎':'◉'};
+NS.menu=open=>{$('sidebar').classList.toggle('open',open);$('backdrop').classList.toggle('open',open)};
+NS.logout=()=>{S.token='';S.data=null;S._scheduleLoaded=false;S._scheduleBusy=false;sessionStorage.removeItem('ns360_token');localStorage.removeItem('ns360_token');$('shell').classList.add('hidden');$('login-view').classList.remove('hidden');$('login-pass').value='';$('print-root').innerHTML='';NS.menu(false)};
+NS.toast=(text,error=false)=>{const b=$('toaster');b.innerHTML='<div class="toast" style="background:'+(error?'#a52d36':'#124775')+'">'+esc(text)+'</div>';setTimeout(()=>b.innerHTML='',4800)};
+NS.busy=(value,text='กำลังประมวลผล...')=>{$('busy-layer').innerHTML=value?'<div class="busy"><div><div class="spin"></div>'+esc(text)+'</div></div>':'';S.busy=value};
+NS.call=async(action,d={},message='บันทึกข้อมูลเรียบร้อย')=>{NS.busy(true);try{const bundle=await api('mutateAndInit',{op:action,args:d});if(bundle.relogin){NS.logout();NS.toast('ข้อมูลบัญชีเปลี่ยนแปลง กรุณาเข้าสู่ระบบใหม่');return bundle.result}if(bundle.delta)Object.assign(S.data,bundle.delta);else if(bundle.snapshot)S.data=bundle.snapshot;if(bundle.dutyData)S.dutyData=bundle.dutyData;if(message)NS.toast(message);NS.render();return bundle.result}catch(e){NS.toast(e.message,true);throw e}finally{NS.busy(false)}};
+NS.speedTest=async()=>{
+ if(S.data?.user?.role!=='SuperAdmin')return;
+ NS.modal('ตรวจวัดความเร็ว NS360',`<p class="muted">วัดจากอุปกรณ์นี้ ไม่แก้ไขข้อมูลในชีท</p><div id="ns-perf-result">กำลังตรวจสอบ...</div>${btn('ปิด','NS.closeModal()','gray')}`);
+ const lines=[];
+ for(const op of ['ping','init']){
+  try{const t=performance.now();await api(op);const rtt=Math.round(performance.now()-t),server=S.lastServerMs, perf=S.lastPerf;
+    const top=perf?.sheets?.filter(x=>!x.cached).sort((a,b)=>b.ms-a.ms).slice(0,5)||[];
+    lines.push(`<p><b>${esc(op)}</b> เครือข่าย+แอป ${rtt} ms · Apps Script ${NS_NATIVE?(server??'?'):'ไม่รองรับใน JSONP'} ms</p>`+
+      (top.length?`<small class="muted">ชีทที่อ่านช้าที่สุด: ${top.map(x=>esc(x.sheet)+' '+x.ms+'ms').join(', ')}</small>`:''));}
+  catch(err){lines.push(`<p>${esc(op)}: ${esc(err.message)}</p>`)}
+  if($('ns-perf-result'))$('ns-perf-result').innerHTML=lines.join('');
+ }
+};
+NS.refresh=async()=>{NS.busy(true,'กำลังโหลดข้อมูล...');try{S.data=await api('init');NS.render()}catch(e){NS.toast(e.message,true);if(/เซสชันหมดอายุ/.test(e.message))NS.logout()}finally{NS.busy(false)}};
+$('login-form').addEventListener('submit',async e=>{e.preventDefault();NS.busy(true,'กำลังตรวจสอบบัญชี...');try{const username=$('login-user').value.trim(),pass=$('login-pass').value;const c=await api('challenge',{username});const proof=await digest((await digest(pass))+':'+c.nonce);const r=await api('login',{id:c.id,proof});S.token=r.token;if($('remember-user').checked){localStorage.setItem('ns360_username',username);localStorage.setItem('ns360_token',r.token)}else{localStorage.removeItem('ns360_username');localStorage.removeItem('ns360_token');sessionStorage.setItem('ns360_token',r.token)}$('login-pass').value='';S.data=r.initial||await api('init');$('login-view').classList.add('hidden');$('shell').classList.remove('hidden');NS.render();NS.toast('ยินดีต้อนรับ '+S.data.user.name)}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}});
+const tab=(label,on,active)=>`<button type="button" class="tab ${active?'active':''}" onclick="${on}">${esc(label)}</button>`;
+const btn=(label,on,type='soft',cls='small')=>`<button class="btn ${type} ${cls}" onclick="${on}">${label}</button>`;
+const scoreLabel=x=>`<span class="${Number(x)>=0?'scoreplus':'scoreminus'}">${Number(x)>0?'+':''}${Number(x).toLocaleString('th-TH')}</span>`;
+const status=x=>`<span class="status ${x==='ผ่าน'?'pass':x==='ไม่ผ่าน'?'fail':'wait'}">${esc(x||'รอพิจารณา')}</span>`;
+const select=(id,items,value='',prompt='ทั้งหมด')=>`<select id="${id}" class="input"><option value="">${esc(prompt)}</option>${items.map(x=>`<option value="${attr(x)}" ${x===value?'selected':''}>${esc(x)}</option>`).join('')}</select>`;
+const field=(label,id,placeholder='',type='text',value='')=>type==='date'?dateField(label,id,value):`<label class="field"><span>${esc(label)}</span><input class="input" id="${id}" type="${type}" value="${attr(value)}" placeholder="${attr(placeholder)}"></label>`;
+// วันที่บนจอทั้งหมดเป็น วว/ดด/ปี พ.ศ. ส่วน backend ยังคงใช้ ISO YYYY-MM-DD
+const pad2=n=>String(n).padStart(2,'0');
+const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`};
+function dateTH(v){
+ if(v==null||v==='')return '';
+ const t=String(v).trim();
+ let m=t.match(/^(\d{4})-(\d{2})-(\d{2})/);
+ if(m){const year=Number(m[1]);return `${m[3]}/${m[2]}/${year>=2400?year:year+543}`;}
+ m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+ if(m){const year=Number(m[3]);return `${pad2(m[1])}/${pad2(m[2])}/${year<2400?year+543:year}`;}
+ return t;
+}
+function parseThaiDate(value,optional=false){
+ const v=String(value||'').trim();if(!v){if(optional)return '';throw Error('กรุณาระบุวันที่ในรูปแบบ วว/ดด/พ.ศ.');}
+ let m=v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+ if(!m)throw Error('รูปแบบวันที่ไม่ถูกต้อง กรุณากรอก วว/ดด/พ.ศ. เช่น 09/10/2569');
+ const day=Number(m[1]),month=Number(m[2]),be=Number(m[3]),year=be-543;
+ if(be<2400||be>2900||year<1900||year>2357)throw Error('กรุณาระบุปี พ.ศ. ให้ถูกต้อง');
+ const d=new Date(year,month-1,day);
+ if(d.getFullYear()!==year||d.getMonth()!==month-1||d.getDate()!==day)throw Error('วันที่ไม่ถูกต้องตามปฏิทิน');
+ return `${year}-${pad2(month)}-${pad2(day)}`;
+}
+// ใช้วันที่แบบ ISO คำนวณวันในสัปดาห์ด้วย UTC เพื่อไม่ให้เขตเวลาทำให้วันคลาดเคลื่อน
+const WEEKDAY_TH=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+const subDateISO=()=>{try{return parseThaiDate(val('sub-date'),true)}catch(e){return ''}};
+const subDayIndex=()=>{const iso=subDateISO();if(!iso)return -1;const [y,m,d]=iso.split('-').map(Number);return new Date(Date.UTC(y,m-1,d)).getUTCDay()};
+const subDayPeriods=sch=>sch?.periodsByDay?.[String(subDayIndex())]||[];
+const subRoomsForDay=sch=>sch?.roomsByDay?.[String(subDayIndex())]||{};
+const subSlotKey=slot=>JSON.stringify([String(slot.room),String(slot.period)]);
+const selectedSubSlots=()=>{const rooms=subRoomsForDay(selectedSchedule());return Object.keys(rooms).filter(room=>S.subRooms.has(room)).flatMap(room=>rooms[room].filter(p=>S.subSlots.has(subSlotKey({room,period:p}))).map(period=>({room,period})));};
+const subDateDisplay=value=>dateTH(value)?dateTH(value)+' พ.ศ.':'–';
+const subSlotDisplay=x=>(x.slots||[]).length?x.slots.map(s=>s.room+' คาบ '+s.period).join(' · '):('คาบ '+(x.period||'-')+' (ข้อมูลเดิมไม่ระบุชั้น/ห้อง)');
+const isoFrom=id=>parseThaiDate(val(id),true);
+const dateField=(label,id,value='')=>`<label class="field"><span>${esc(label)}</span><div class="date-entry"><input id="${id}" class="input" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="วว/ดด/พ.ศ." value="${attr(dateTH(value))}" aria-label="${esc(label)}" ${id==='sub-date'?'oninput="NS.subDateChanged()" onchange="NS.subDateChanged()"':id==='duty-date'?'onchange="NS.dutyDateChanged()"':''} onblur="NS.dateFieldBlur('${id}')"><button class="btn soft" type="button" onclick="NS.openDateCalendar('${id}')" title="เลือกวันที่ พ.ศ." aria-label="เลือกวันที่ ${esc(label)}">▦</button></div><small class="date-hint">วว/ดด/ปี พ.ศ. เช่น 09/10/2569</small></label>`;
+NS.dateFieldBlur=id=>{const input=$(id);if(!input||!input.value.trim())return;try{input.value=dateTH(parseThaiDate(input.value));input.removeAttribute('aria-invalid')}catch(e){input.setAttribute('aria-invalid','true')}};
+const TH_MONTHS=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+NS.openDateCalendar=id=>{
+ const input=$(id);if(!input)return;let iso=todayISO();try{iso=parseThaiDate(input.value,true)||iso}catch(e){}
+ S._calendar={id,year:Number(iso.slice(0,4)),month:Number(iso.slice(5,7))-1};NS.renderDateCalendar();
+};
+NS.closeDateCalendar=()=>{$('date-popover').innerHTML='';S._calendar=null};
+NS.calendarMove=delta=>{const c=S._calendar;if(!c)return;const d=new Date(c.year,c.month+delta,1);c.year=d.getFullYear();c.month=d.getMonth();NS.renderDateCalendar()};
+NS.calendarSelect=(day)=>{const c=S._calendar;if(!c)return;const el=$(c.id);if(el)el.value=dateTH(`${c.year}-${pad2(c.month+1)}-${pad2(day)}`);NS.closeDateCalendar();if(c.id==='sub-date')NS.subDateChanged();if(c.id==='duty-date')NS.dutyDateChanged()};
+NS.calendarToday=()=>{const c=S._calendar;if(!c)return;const el=$(c.id);if(el)el.value=dateTH(todayISO());NS.closeDateCalendar();if(c.id==='sub-date')NS.subDateChanged();if(c.id==='duty-date')NS.dutyDateChanged()};
+NS.renderDateCalendar=()=>{
+ const c=S._calendar;if(!c)return;const first=new Date(c.year,c.month,1).getDay(),days=new Date(c.year,c.month+1,0).getDate(),now=todayISO();
+ const picked=(()=>{try{return parseThaiDate($(c.id)?.value,true)}catch(e){return ''}})();
+ const grid=Array.from({length:first},()=>'<span class="blank"></span>').join('')+Array.from({length:days},(_,i)=>{const day=i+1,iso=`${c.year}-${pad2(c.month+1)}-${pad2(day)}`;return `<button type="button" class="${picked===iso?'selected':''} ${now===iso?'today':''}" onclick="NS.calendarSelect(${day})" aria-label="วันที่ ${dateTH(iso)}">${day}</button>`}).join('');
+ $('date-popover').innerHTML=`<div class="date-pop-bg" onclick="if(event.target===this)NS.closeDateCalendar()"><div class="date-pop" role="dialog" aria-modal="true" aria-label="ปฏิทินปีพุทธศักราช"><div class="date-pop-header"><button type="button" class="btn soft small" onclick="NS.calendarMove(-1)" aria-label="เดือนก่อน">❮</button><b>${TH_MONTHS[c.month]} ${c.year+543}</b><button type="button" class="btn soft small" onclick="NS.calendarMove(1)" aria-label="เดือนถัดไป">❯</button></div><div class="date-pop-week">${['อา','จ','อ','พ','พฤ','ศ','ส'].map(w=>`<span>${w}</span>`).join('')}</div><div class="date-pop-days">${grid}</div><div class="date-pop-actions"><button type="button" class="btn soft small" onclick="NS.calendarToday()">วันนี้</button><button type="button" class="btn gray small" onclick="NS.closeDateCalendar()">ปิด</button></div></div></div>`;
+};
+const headline=(title,subtitle='',action='')=>`<div class="page-head"><div><div class="eyebrow">NS360 · NARASIKKHALAI</div><h1>${title}</h1>${subtitle?`<p class="muted">${esc(subtitle)}</p>`:''}</div>${action}</div>`;
+const val=id=>$(id)?.value||'';
+const groups=()=>[...new Set(S.data.users.map(x=>x.group).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'th'));
+const mine=()=>S.data.scores.filter(x=>x.username===S.data.user.username);
+// คะแนนเต็มตั้งต้นแสดงแยกต่างหาก; คะแนนสุทธิสำหรับแดชบอร์ดและรายงานทุกประเภท = คะแนนเพิ่ม − คะแนนที่ถูกหัก
+const fullScore=()=> (S.data?.maximums||[]).reduce((sum,x)=>sum+(Number(x.max)||0),0);
+const totals=arr=>{const full=fullScore(),plus=arr.reduce((sum,x)=>sum+(Number(x.score)>0?Number(x.score):0),0),minus=arr.reduce((sum,x)=>sum+(Number(x.score)<0?Number(x.score):0),0);return {full,plus,minus,adjustment:plus+minus,total:plus+minus}};
+function onlyDate(x){return String(x||'').slice(0,10)}
+function renderTable(headers,rows,empty='ยังไม่มีรายการ'){return rows.length?`<div class="table-wrap"><table><thead><tr>${headers.map(t=>'<th>'+esc(t)+'</th>').join('')}</tr></thead><tbody>${rows.map(cells=>'<tr>'+cells.map(t=>'<td>'+t+'</td>').join('')+'</tr>').join('')}</tbody></table></div>`:`<div class="empty">${esc(empty)}</div>`}
+NS.render=()=>{if(!S.data)return;const u=S.data.user,r=S.data.rights;const items=[['home','⌂','ภาพรวม / หน้าผู้ใช้'],...(r.review||r.saveScore?[['scores','☑','บันทึกคะแนน / พิจารณา']]:[]),...(r.substitute?[['subs','↗','บันทึกสอนแทน']]:[]),...(r.periods?[['periods','▣','กำหนดจำนวนคาบสอน']]:[]),...(r.attendance?[['duty','☷','บันทึกการปฏิบัติหน้าที่และเวรประจำวัน']]:[]),...(r.roster?[['roster','▦','จัดตารางเวรประจำวัน']]:[]),...(r.report?[['reports','▤','รายงานผลการประเมิน']]:[]),...(r.admin?[['admin','⚙','ตั้งค่าระบบ']]:[])];if(!items.some(x=>x[0]===S.page))S.page='home';$('role-pill').textContent=u.role;$('nav').innerHTML=items.map(x=>`<button class="${S.page===x[0]?'active':''}" onclick="NS.goto('${x[0]}')"><span class="ico">${x[1]}</span>${esc(x[2])}</button>`).join('')+`${r.admin?'<button onclick="NS.speedTest()"><span class="ico">◷</span>วัดความเร็วระบบ</button>':''}<button onclick="NS.openProfile()"><span class="ico">♙</span>เปลี่ยนชื่อผู้ใช้ / รหัสผ่าน</button><button onclick="NS.logout()"><span class="ico">⇥</span>ออกจากระบบ</button>`;
+  $('main').innerHTML=({home:renderHome,scores:renderScores,subs:renderSubs,periods:renderPeriods,duty:renderDuty,roster:renderRoster,reports:renderReports,admin:renderAdmin})[S.page]();if(S.page==='subs')NS.subDateChanged();if(S.page==='admin'&&S.adminTab==='criteria'){if(S.criteriaSubTab==='training')NS.countRuleItems();if(S.criteriaSubTab==='award')NS.awardRuleItems();if(S.criteriaSubTab==='volunteer'){NS.volunteerRuleItems();const r=S.data.volunteerRule;if(r){$('vc-category').value=r.category;NS.volunteerRuleItems();$('vc-item').value=r.item;}}}};
+NS.loadSchedule=async()=>{
+ if(!S.data?.rights?.substitute||S._scheduleLoaded||S._scheduleBusy)return;
+ S._scheduleBusy=true;
+ try{S.data.schedule=await api('listSchedule');S._scheduleLoaded=true;if(S.page==='subs')NS.render();}
+ catch(e){NS.toast('โหลดตารางสอน: '+e.message,true)}finally{S._scheduleBusy=false;}
+};
+NS.goto=page=>{S.page=page;NS.menu(false);NS.render();if(page==='duty')NS.loadDutyData();if(page==='subs')NS.loadSchedule();window.scrollTo(0,0)};
+function renderHome(){const u=S.data.user,s=mine(),k=totals(s),work=S.data.work.filter(x=>x.username===u.username).sort((a,b)=>String(b.at).localeCompare(a.at));return `${headline('ภาพรวมการปฏิบัติงาน','ยินดีต้อนรับ '+u.name,btn('✎ เปลี่ยนข้อมูลเข้าสู่ระบบ','NS.openProfile()'))}<div class="card"><div class="row space"><div><b>${esc(u.name)}</b><p class="muted">${esc(u.position||'-')} · ${esc(u.group||'-')}</p></div><span class="pill">${esc(u.role)}</span></div></div><div class="stat-grid"><div class="stat"><small>คะแนนเต็มตั้งต้น</small><div class="big">${k.full.toLocaleString('th-TH')}</div><b>กำหนดโดยผู้ดูแลระบบ</b></div><div class="stat"><small>คะแนนสุทธิปัจจุบัน</small><div class="big">${k.adjustment.toLocaleString('th-TH')}</div><b>คะแนนเพิ่ม − คะแนนที่ถูกหัก</b></div><div class="stat pos"><small>คะแนนเพิ่ม</small><div class="big">+${k.plus.toLocaleString('th-TH')}</div><b>คะแนนด้านบวก</b></div><div class="stat neg"><small>คะแนนที่ถูกหัก</small><div class="big">${k.minus.toLocaleString('th-TH')}</div><b>คะแนนด้านลบ</b></div></div><p class="muted" style="margin:0 0 20px 3px;font-size:12px">การคำนวณ: ${k.plus.toLocaleString('th-TH')} คะแนนเพิ่ม − ${Math.abs(k.minus).toLocaleString('th-TH')} คะแนนหัก = <b>${k.adjustment.toLocaleString('th-TH')} คะแนน</b> (ไม่รวมคะแนนเต็มตั้งต้น)</p><div class="card"><div class="row space"><h2>บันทึกผลการปฏิบัติงาน</h2>${btn('+ บันทึกผลงาน','NS.openWork()','gold')}</div><p class="muted" style="margin-bottom:14px">ส่งหลักฐานให้ผู้พิจารณาตามหมวดหมู่ที่รับผิดชอบ</p>${renderTable(['ชื่องาน / โครงการ','วันที่บันทึก','สถานะ','คะแนน','รายละเอียด'],work.map(x=>[esc(x.title),esc(dateTH(x.at)),status(x.status),scoreLabel(x.score),btn('ดู','NS.workDetail(\''+x.id+'\')')]),'ยังไม่มีประวัติการบันทึกผลงาน')}</div><div class="card"><h2>รายการบันทึกคะแนน</h2><div class="tabs">${tab('คะแนนที่เพิ่ม',"NS.setTab('plus')",S.tab==='plus')}${tab('คะแนนที่ลบ',"NS.setTab('minus')",S.tab==='minus')}</div>${renderTable(['วันที่','หมวดหมู่','รายการประเมิน','ที่มา','คะแนน'],s.filter(x=>S.tab==='plus'?x.score>=0:x.score<0).sort((a,b)=>String(b.at).localeCompare(a.at)).map(x=>[esc(dateTH(x.at)),esc(x.category),esc(x.item),esc(x.source),scoreLabel(x.score)]))}</div>`}
+NS.setTab=t=>{S.tab=t;NS.render()};
+function renderScores(){const right=S.data.rights;return `${headline('บันทึกคะแนนและพิจารณาผลงาน','รายการตามสิทธิ์และบทบาทของผู้เข้าสู่ระบบ')}<div class="tabs">${right.review?tab('รายการผลงานรอพิจารณา',"NS.scoreTab('pending')",S.scoreTab==='pending'):''}${right.saveScore?tab('บันทึกคะแนนการปฏิบัติงาน',"NS.scoreTab('manual')",S.scoreTab==='manual'):''}</div>${S.scoreTab==='pending'&&right.review?renderPending():renderManual()}`}
+NS.scoreTab=t=>{S.scoreTab=t;NS.render()};
+function renderPending(){
+ const u=S.data.user;
+ const eligible=c=>u.role==='SuperAdmin'||u.role==='กลุ่มบริหาร/อำนวยการ'||u.role==='User'||u.role===c;
+ const work=S.data.work.filter(x=>x.status==='รอพิจารณา'&&eligible(x.category)).sort((a,b)=>String(b.at).localeCompare(a.at));
+ const sc=S.data.subCriterion;
+ const subs=sc&&eligible(sc.category)?(S.data.subs||[]).filter(x=>x.status==='รอพิจารณา').sort((a,b)=>String(b.at).localeCompare(a.at)):[];
+ return `<div class="card"><h2>ผลงานรอพิจารณา <span class="pill">${work.length} รายการ</span></h2>${renderTable(['รายการ','ชื่อ-สกุล','หมวดหมู่','วันที่บันทึก','ตรวจสอบ'],work.map((x,i)=>[String(i+1)+'. '+esc(x.title),esc(x.name),esc(x.category),esc(dateTH(x.at)),btn('ดูรายละเอียด',"NS.workDetail('"+x.id+"')")]))}</div>`+
+ `<div class="card"><h2>การสอนแทนรอพิจารณา <span class="pill">${subs.length} รายการ</span></h2><p class="muted" style="margin-bottom:12px">คะแนนจะได้รับต่อเมื่อผู้มีสิทธิ์พิจารณากดผ่านเท่านั้น</p>${renderTable(['วันที่สอนแทน / วิชา','ครูผู้สอนแทน','ชั้น/ห้องและคาบ','คะแนนเมื่อผ่าน','วันที่บันทึก / ตรวจสอบ'],subs.map(x=>[esc(subDateDisplay(x.date))+'<br>'+esc(x.code)+' · '+esc(x.course),esc(x.name)+'<br><small>'+esc(x.teacherGroup||S.data.users.find(u=>u.username===x.username)?.group||'')+'</small>',esc(subSlotDisplay(x))+'<br><small>'+esc(x.slotCount)+' คาบ · เหตุผล: '+esc(x.assignmentReason||'ข้อมูลเดิมไม่ระบุ')+' · หลักฐาน '+(x.proofs?.length||0)+' รูป</small>',scoreLabel(x.potential),esc(subDateDisplay(x.at))+'<br>'+btn('พิจารณา',"NS.subDetail('"+encodeURIComponent(x.id)+"')")]),'ไม่มีรายการสอนแทนรอพิจารณา')}</div>`;
+}
+function teacherPicker(){const a=S.data.users.filter(x=>(!S.group||x.group===S.group)&&(!S.teacherSearch||x.name.toLowerCase().includes(S.teacherSearch.toLowerCase())));return `<div class="filter-row">${select('teacher-group',groups(),S.group,'ทุกกลุ่มสาระ')}<input class="input" id="teacher-query" placeholder="ค้นหาชื่อครู" value="${attr(S.teacherSearch)}"><button class="btn soft" onclick="NS.filterTeachers()">ค้นหา</button></div><div class="checklist">${a.map(x=>`<label><input type="checkbox" ${S.selectedTeachers.has(x.username)?'checked':''} onchange="NS.pickTeacher('${encodeURIComponent(x.username)}',this.checked)"> <span>${esc(x.name)} <small class="muted">(${esc(x.group)})</small></span></label>`).join('')||'<div class="empty">ไม่พบรายชื่อครู</div>'}</div><div class="line"></div><small class="muted">เลือกแล้ว ${S.selectedTeachers.size} คน</small><div style="margin-top:8px">${[...S.selectedTeachers].map(x=>'<span class="tag">'+esc(S.data.users.find(u=>u.username===x)?.name||x)+'</span>').join('')}</div>`}
+NS.filterTeachers=()=>{S.group=val('teacher-group');S.teacherSearch=val('teacher-query');NS.render()};
+NS.pickTeacher=(name,checked)=>{let x=decodeURIComponent(name);checked?S.selectedTeachers.add(x):S.selectedTeachers.delete(x);NS.render()};
+const criterionKey=x=>x.category+'\x1f'+x.item;
+NS.pickCriterion=(key,checked)=>{let k=decodeURIComponent(key);checked?S.selectedCriteria.add(k):S.selectedCriteria.delete(k);NS.render()};
+function renderManual(){const items=S.data.myScoreCriteria||[];return `<div class="grid2"><div class="card"><h2>1. เลือกครูที่ต้องการประเมิน</h2>${teacherPicker()}</div><div class="card"><h2>2. เลือกรายการเกณฑ์คะแนน</h2><p class="muted" style="margin-bottom:12px">แสดงเฉพาะหมวดและเกณฑ์ที่ตรงกับบทบาทของคุณและ SuperAdmin กำหนดไว้ในแท็บ “กำหนดบันทึกคะแนน”</p>${items.length?`<div class="checklist">${S.data.categories.filter(cat=>items.some(x=>x.category===cat)).map(cat=>`<div style="background:#edf5fe;padding:10px;border-radius:8px;margin-top:5px"><b>${esc(cat)}</b></div>${[1,-1].map(sign=>`<b style="padding:8px;color:${sign===1?'#167f55':'#c53848'}">${sign===1?'ด้านบวก (+)':'ด้านลบ (−)'}</b>${items.filter(x=>x.category===cat&&(sign===1?x.score>0:x.score<0)).map(x=>`<label><input type="checkbox" ${S.selectedCriteria.has(criterionKey(x))?'checked':''} onchange="NS.pickCriterion('${encodeURIComponent(criterionKey(x))}',this.checked)"><span style="flex:1">${esc(x.item)}</span>${scoreLabel(x.score)}</label>`).join('')||'<small class="muted" style="padding-left:12px">ไม่มีรายการ</small>'}`).join('')}`).join('')}</div>`:'<div class="alert">ยังไม่ได้รับการกำหนดรายการเกณฑ์คะแนนสำหรับบันทึก กรุณาติดต่อ SuperAdmin เพื่อกำหนดรายการในหน้าตั้งค่า</div>'}</div></div><div class="card"><label class="field"><span>หมายเหตุการบันทึก</span><textarea id="score-note" placeholder="รายละเอียดเพิ่มเติม (ถ้ามี)"></textarea></label><button class="btn gold" ${!items.length?'disabled':''} onclick="NS.confirmScore()">ตรวจสอบและยืนยันบันทึกคะแนน (${S.selectedTeachers.size} คน / ${[...S.selectedCriteria].filter(k=>items.some(x=>criterionKey(x)===k)).length} รายการ)</button></div>`}
+
+NS.confirmScore=()=>{const arr=(S.data.myScoreCriteria||[]).filter(x=>S.selectedCriteria.has(criterionKey(x)));if(!S.selectedTeachers.size||!arr.length){NS.toast('กรุณาเลือกครูและเกณฑ์คะแนน',true);return}const note=val('score-note'),total=arr.reduce((t,x)=>t+x.score,0);NS.modal('ยืนยันการบันทึกคะแนน',`<p>ผู้รับการประเมิน <b>${S.selectedTeachers.size} คน</b> / ${arr.length} รายการ</p><p>รวมคะแนนต่อคน: ${scoreLabel(total)}</p><div class="line"></div>${arr.map(x=>'<p>'+esc(x.item)+' : '+scoreLabel(x.score)+'</p>').join('')}<div class="line"></div>${btn('ยืนยันบันทึก','NS.doScore()','gold','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}`);S._scoreNote=note};
+NS.doScore=async()=>{const selected=(S.data.myScoreCriteria||[]).filter(x=>S.selectedCriteria.has(criterionKey(x))).map(x=>({category:x.category,item:x.item})),names=[...S.selectedTeachers];NS.closeModal();NS.busy(true);try{let num=0;for(let i=0;i<names.length;i+=12){for(let j=0;j<selected.length;j+=8){const a=await api('manualScore',{usernames:names.slice(i,i+12),criteria:selected.slice(j,j+8),note:S._scoreNote});num+=a.count||0}}Object.assign(S.data,await api('readScores'));S.selectedCriteria.clear();S.selectedTeachers.clear();NS.render();NS.toast('บันทึกคะแนนสำเร็จ '+num+' รายการ')}catch(e){NS.toast('อาจบันทึกบางส่วนแล้ว: '+e.message,true)}finally{NS.busy(false)}};
+NS.modal=(title,content)=>{$('modal-layer').innerHTML=`<div class="modal-wrap" onclick="if(event.target===this)NS.closeModal()"><div class="modal"><div class="modal-head"><h2>${title}</h2><button class="close" onclick="NS.closeModal()">×</button></div>${content}</div></div>`};NS.closeModal=()=>{NS.releaseAwardPreview?.();$('modal-layer').innerHTML=''};
+NS.workDetail=id=>{const x=S.data.work.find(z=>z.id===id);if(!x)return;const u=S.data.user,r=S.data.rights,mayReview=x.status==='รอพิจารณา'&&r.review&&(u.role==='SuperAdmin'||u.role==='กลุ่มบริหาร/อำนวยการ'||u.role==='User'||u.role===x.category);NS.modal('รายละเอียดผลการปฏิบัติงาน',`<div class="row space"><b>${esc(x.title)}</b>${status(x.status)}</div><div class="line"></div><p><b>ผู้บันทึก:</b> ${esc(x.name)} (${esc(x.group)})</p><p><b>หมวดหมู่:</b> ${esc(x.category)}</p><p><b>รายการประเมิน:</b> ${esc(x.item)}</p>${x.kind==='award'?`<p><b>ประเภท:</b> ผลงานรางวัล</p><p><b>ผลงานระดับ:</b> ${esc(x.level)}</p>`:x.kind==='training'?'<p><b>ประเภท:</b> ประชุม/อบรม/สัมมนาพัฒนาวิชาชีพ (คะแนนตามขั้น 1–3)</p>':x.kind==='volunteer'?'<p><b>ประเภท:</b> งานจิตอาสา (นับเฉพาะผลงานที่ผ่านพิจารณา)</p>':''}<p><b>หน่วยงานที่จัด:</b> ${esc(x.agency)}</p><p><b>ระยะเวลา:</b> ${esc(dateTH(x.start))} - ${esc(dateTH(x.end))}</p><p><b>รายละเอียด:</b> ${esc(x.details)}</p><p><b>ผลการปฏิบัติงาน:</b> ${esc(x.result)}</p><p><b>วันที่บันทึก:</b> ${esc(dateTH(x.at))}</p><p><b>คะแนนที่ได้:</b> ${scoreLabel(x.score)}</p>${x.status==='ไม่ผ่าน'?`<div class="alert" style="color:#b32836;background:#fff2f2"><b>เหตุผลไม่ผ่าน:</b> ${esc(x.reason)}</div>`:''}${x.photos.length?`<div class="line"></div><div class="photo-grid">${x.photos.map(url=>`<a href="${attr(url)}" target="_blank" rel="noopener noreferrer"><img alt="ภาพหลักฐาน" src="${attr(url)}"></a>`).join('')}</div>`:''}${mayReview?`<div class="line"></div>${btn('✓ ผ่านการพิจารณา',"NS.review('"+id+"','ผ่าน')",'gold','')} ${btn('✕ ไม่ผ่าน',"NS.review('"+id+"','ไม่ผ่าน')",'red','')}`:''}`)};
+NS.review=async(id,status)=>{if(status==='ไม่ผ่าน'){NS.modal('ระบุเหตุผลที่ไม่ผ่าน',`<label class="field"><span>เหตุผล</span><textarea id="reject-reason" required></textarea></label>${btn('ยืนยันไม่ผ่าน',"NS.doReview('"+id+"','ไม่ผ่าน')",'red','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}`)}else{await NS.doReview(id,status)}};
+NS.doReview=async(id,status)=>{const reason=val('reject-reason');if(status==='ไม่ผ่าน'&&!reason.trim()){NS.toast('กรุณาระบุเหตุผลให้ชัดเจน',true);return}NS.closeModal();try{await NS.call('reviewWork',{id,status,reason},'บันทึกผลการพิจารณาแล้ว')}catch(e){}};
+function selectedSchedule(){return (S.data.schedule||[]).find(x=>x.key===S._subKey)}
+
+function substituteGroupFor(x){
+ return S.data.users.find(u=>u.username===x?.username)?.group||x?.teacherGroup||'';
+}
+function subTeacherOptions(group,selected){
+ const teachers=S.data.users.filter(u=>u.group===group).slice().sort((a,b)=>a.name.localeCompare(b.name,'th'));
+ return '<option value="">-- เลือกครูผู้สอนแทน --</option>'+teachers.map(u=>`<option value="${attr(u.username)}" ${u.username===selected?'selected':''}>${esc(u.name)}</option>`).join('');
+}
+NS.subGroupChanged=()=>{
+ S.subTeacherGroup=val('sub-teacher-group');
+ S.subTeacherUsername='';
+ const el=$('sub-user');if(el)el.innerHTML=subTeacherOptions(S.subTeacherGroup,'');
+ const count=$('sub-teacher-hint');if(count)count.textContent=`พบ ${S.data.users.filter(u=>u.group===S.subTeacherGroup).length} รายชื่อในกลุ่มสาระที่เลือก`;
+};
+NS.subTeacherChanged=()=>{S.subTeacherUsername=val('sub-user')};
+NS.clearSubProofPreview=()=>{(S.subProofPreviewUrls||[]).forEach(u=>URL.revokeObjectURL(u));S.subProofPreviewUrls=[]};
+NS.subPreviewProofs=()=>{
+ NS.clearSubProofPreview();
+ const files=[...($('sub-proofs')?.files||[])],box=$('sub-proof-preview'),caption=$('sub-proof-count');
+ if(!box||!caption)return;
+ const valid=files.length>=1&&files.length<=5&&files.every(f=>f.type.startsWith('image/'));
+ caption.textContent=files.length?`เลือก ${files.length} รูป ${valid?'✓':'(ต้องเป็นภาพ 1–5 รูป)'}`:'ยังไม่ได้เลือกรูปใหม่';
+ box.innerHTML=files.slice(0,5).map((f,i)=>{
+  const url=URL.createObjectURL(f);S.subProofPreviewUrls.push(url);
+  return `<figure><img src="${attr(url)}" alt="ตัวอย่างหลักฐาน ${i+1}"><figcaption>${esc(f.name)}</figcaption></figure>`;
+ }).join('');
+};
+function subProofLinks(x){
+ const links=Array.isArray(x?.proofs)?x.proofs:[];
+ if(!links.length)return '<p class="muted">ไม่พบรูปหลักฐาน (ข้อมูลก่อนการปรับปรุง)</p>';
+ return `<div class="sub-evidence-grid">${links.map((url,i)=>`<a href="${attr(url)}" target="_blank" rel="noopener noreferrer" title="เปิดหลักฐานรูปที่ ${i+1}"><img src="${attr(url)}" alt="หลักฐานประกอบการมอบหมายรูปที่ ${i+1}" loading="lazy"><small>หลักฐาน ${i+1}</small></a>`).join('')}</div>`;
+}
+function renderSubs(){
+ const editing=S.subId?S.data.subs.find(x=>x.id===S.subId):null;
+ const when=editing?editing.date:todayISO();
+ const teacherGroup=S.subTeacherGroup|| (editing?substituteGroupFor(editing):S.data.user.group)||groups()[0]||'';
+ S.subTeacherGroup=teacherGroup;
+ const chosenTeacher=S.subTeacherUsername;
+
+ const editBanner=editing?`<div class="sub-edit-banner" role="status"><b>✎ กำลังแก้ไขรายการสอนแทน</b><div>${esc(subDateDisplay(editing.date))} · ${esc(editing.code)} · ${esc(subSlotDisplay(editing))}</div><small>การบันทึกแก้ไขจะส่งพิจารณาใหม่ และยกเลิกคะแนนเดิมหากเคยอนุมัติแล้ว</small></div>`:'';
+ const history=(S.data.subs||[]).filter(x=>S.data.rights.substitute).slice().reverse();
+ const c=S.data.subCriterion;
+ return `${headline('ลงทะเบียนสอนแทน','เลือกคาบตามตารางสอน และส่งให้ผู้มีสิทธิ์พิจารณาอนุมัติก่อนรับคะแนน')}
+ <div class="grid2"><div class="card" id="sub-editor"><h2>${editing?'แก้ไขการลงทะเบียนสอนแทน':'ลงทะเบียนสอนแทน'}</h2>${editBanner}
+ ${field('วันที่สอนแทน','sub-date','','date',when)}<p class="muted" style="margin:-5px 0 13px">ผู้เข้าสู่ระบบ: <b>${esc(S.data.user.name)}</b> · แสดงเฉพาะรายวิชาของคุณที่มีคาบตรงกับวันที่เลือก เช่น 28/10/2569 (วันพุธ)</p>
+ <label class="field"><span>ค้นหารหัสวิชา / ชื่อวิชา</span><input class="input" type="search" id="sub-search" value="${attr(S.subSearch)}" placeholder="พิมพ์รหัสวิชา หรือชื่อวิชา" autocomplete="off" oninput="NS.searchCourse(this.value)"></label>
+ <label class="field"><span>เลือกรหัสวิชาของฉัน (ตามวันที่สอนแทน)</span><select id="sub-code" class="input" onchange="NS.showCourse()">${courseOptions()}</select><small class="muted" id="sub-search-count">${courseSearchCount()}</small></label>
+ <div id="course-info" class="alert">เลือกวิชาเพื่อดูชื่อวิชา ครูผู้สอน ชั้น/ห้อง และคาบตามตาราง</div>
+ <div class="field"><span><b>1. เลือกชั้น/ห้องที่ต้องการให้สอนแทน (เลือกได้หลายห้อง)</b></span><div id="sub-room-list" class="sub-periods"><span class="muted">กรุณาเลือกรหัสวิชาก่อน</span></div><p class="muted">แสดงเฉพาะชั้น/ห้องที่มีรายวิชานี้ในวันที่เลือก</p></div>
+ <div class="field"><span><b>2. เลือกคาบสอนแทนของแต่ละชั้น/ห้อง</b></span><div id="sub-period-list" class="sub-periods"><span class="muted">เลือกชั้น/ห้องก่อน</span></div><div class="row"><button class="btn soft small" type="button" onclick="NS.selectAllSubPeriods(true)">เลือกทุกคาบของห้องที่เลือก</button><button class="btn gray small" type="button" onclick="NS.selectAllSubPeriods(false)">ล้างคาบที่เลือก</button></div></div>
+ <div class="sub-score-hint" id="sub-score-hint">คะแนนประมาณการ: เลือกคาบเพื่อคำนวณ (${c?esc(c.score)+' คะแนนต่อคาบ':'ยังไม่ได้ตั้งเกณฑ์สอนแทน'})</div>
+ <div class="grid2"><label class="field"><span><b>3. เลือกกลุ่มสาระของครูผู้สอนแทน</b></span><select id="sub-teacher-group" class="input" onchange="NS.subGroupChanged()">${groups().map(g=>`<option value="${attr(g)}" ${g===teacherGroup?'selected':''}>${esc(g)}</option>`).join('')}</select></label>
+ <label class="field"><span><b>4. เลือกครูผู้ได้รับมอบหมายให้สอนแทน</b></span><select id="sub-user" class="input" onchange="NS.subTeacherChanged()">${subTeacherOptions(teacherGroup,chosenTeacher)}</select><small class="muted" id="sub-teacher-hint">พบ ${S.data.users.filter(x=>x.group===teacherGroup).length} รายชื่อในกลุ่มสาระที่เลือก</small></label></div>
+ <div class="alert" style="margin-bottom:12px"><b>ผู้ได้รับคะแนน:</b> ครูที่ได้รับมอบหมายให้สอนแทนตามชื่อที่เลือกด้านบนเท่านั้น คะแนนจะเกิดหลังผ่านการพิจารณา</div>
+ <label class="field"><span><b>5. เหตุผลที่ต้องมอบหมายให้สอนแทน</b></span><textarea id="sub-assignment-reason" rows="4" maxlength="2000" placeholder="เช่น ครูเจ้าของวิชาไปราชการ อบรม ลาป่วย หรือติดภารกิจ พร้อมรายละเอียดที่จำเป็น">${esc(editing?.assignmentReason||'')}</textarea><small class="muted">จำเป็นต้องระบุเหตุผลประกอบการพิจารณา</small></label>
+ <label class="field"><span><b>6. แนบรูปหลักฐานประกอบการพิจารณา (อย่างน้อย 1 รูป สูงสุด 5 รูป)</b></span><input id="sub-proofs" class="input" type="file" accept="image/*" multiple onchange="NS.subPreviewProofs()"><small class="muted">เช่น ภาพหนังสือต้นเรื่อง ใบนัด ใบลา หรือเอกสารอื่นที่เกี่ยวข้อง · หากแก้ไขและไม่เลือกรูปใหม่ จะใช้รูปเดิม</small></label>
+ <div id="sub-proof-count" class="muted">ยังไม่ได้เลือกรูปใหม่</div><div id="sub-proof-preview" class="sub-proof-preview" aria-live="polite"></div>
+ ${editing?.proofs?.length?`<div class="field"><b>หลักฐานที่บันทึกไว้ (${editing.proofs.length} รูป)</b>${subProofLinks(editing)}<small class="muted">หากเลือกรูปใหม่ จะใช้แทนชุดรูปเดิมทั้งหมด</small></div>`:''}
+ <div class="row">${btn(editing?'ยืนยันแก้ไขและส่งพิจารณา':'บันทึกและส่งพิจารณา','NS.saveSub()','gold','')}${editing?btn('ยกเลิกการแก้ไข','NS.cancelSub()','gray',''):''}</div>
+ <p class="muted" style="margin-top:12px">ยังไม่ได้รับคะแนนเมื่อส่งข้อมูล ระบบจะเพิ่มคะแนนตามเกณฑ์หลังจากได้รับอนุมัติเท่านั้น</p>
+ </div><div class="card"><h2>ประวัติการสอนแทน</h2>
+ ${renderTable(['วันที่ / รายวิชา / ชั้นห้องและคาบ','ผู้สอนแทน','สถานะ / คะแนน','จัดการ'],history.map(x=>[esc(subDateDisplay(x.date))+'<br>'+esc(x.code)+' · '+esc(x.course)+'<br><small>'+esc(subSlotDisplay(x))+'</small><br><small>เหตุผล: '+esc(x.assignmentReason||'ไม่ได้ระบุในข้อมูลเดิม')+'</small> · <small>หลักฐาน '+(x.proofs?.length||0)+' รูป</small><br><small class="muted">บันทึกเมื่อ '+esc(subDateDisplay(x.at))+'</small>',esc(x.name),`<div class="sub-history-status">${status(x.status)} ${scoreLabel(x.score)}</div>${x.status==='รอพิจารณา'?`<small class="muted">หากผ่านจะได้ ${esc(x.potential)} คะแนน</small>`:''}${x.status==='ไม่ผ่าน'?`<p style="color:#b32836"><small>เหตุผล: ${esc(x.reason)}</small></p>`:''}`,`<div class="sub-history-actions">${btn('✎ แก้ไข',"NS.editSub('"+encodeURIComponent(x.id)+"')")}${btn('ลบ',"NS.deleteSub('"+encodeURIComponent(x.id)+"')",'red')}</div>`]),'ยังไม่มีประวัติการสอนแทน')}
+ </div></div>`;
+}
+function searchedCourses(){
+ const q=S.subSearch.trim().toLocaleLowerCase('th'),day=subDayIndex();
+ if(day<0)return [];
+ // เซิร์ฟเวอร์ส่งเฉพาะรายวิชาของผู้เข้าสู่ระบบ และฝั่งเว็บตรวจชื่อซ้ำอีกชั้น
+ const ownName=x=>String(x||'').normalize('NFKC').replace(/[\s\u200b-\u200d\ufeff]+/g,'');
+ const username=ownName(S.data?.user?.name);
+ return (S.data?.schedule||[]).filter(x=>username&&ownName(x.owner)===username&&
+   (x.periodsByDay?.[String(day)]||[]).length&&(!q||String(x.code).toLocaleLowerCase('th').includes(q)||String(x.course).toLocaleLowerCase('th').includes(q)));
+}
+function courseSearchCount(){
+ const iso=subDateISO();if(!iso)return 'กรุณาระบุวันที่สอนแทนที่ถูกต้องก่อนเลือกรหัสวิชา';
+ const n=searchedCourses().length;return n?`พบรายวิชาที่คุณสอน ${n} รายการในวัน${WEEKDAY_TH[subDayIndex()]}${n>150?' (แสดง 150 รายการแรก)':''}`:`ไม่พบรายวิชาของคุณในวัน${WEEKDAY_TH[subDayIndex()]}${S.subSearch.trim()?'ที่ตรงกับคำค้นหา':''} กรุณาตรวจสอบชื่อ-สกุลในข้อมูลผู้ใช้ให้ตรงกับตารางสอน`;
+}
+function courseOptions(){
+ const results=searchedCourses(),selected=S._subKey,shown=results.slice(0,150);
+ if(selected&&!shown.some(x=>x.key===selected)){const match=results.find(x=>x.key===selected);if(match)shown.unshift(match)}
+ return '<option value="">-- เลือกรหัสวิชา --</option>'+shown.map(x=>`<option value="${attr(x.key)}" ${x.key===selected?'selected':''}>${esc(x.code)} · ${esc(x.course)}${x.owner?' ('+esc(x.owner)+')':''}</option>`).join('');
+}
+NS.searchCourse=q=>{S.subSearch=q;const sel=$('sub-code');if(!sel)return;const previous=sel.value||S._subKey;sel.innerHTML=courseOptions();sel.value=[...sel.options].some(o=>o.value===previous)?previous:'';$('sub-search-count').textContent=courseSearchCount();NS.showCourse()};
+// เมื่อเปลี่ยนวันที่หรือรายวิชา ให้ล้างการเลือกชั้น/ห้องและคาบ เพื่อป้องกันใช้ข้อมูลข้ามวัน
+NS.subDateChanged=()=>{
+ const iso=subDateISO();
+ if(S._subDateISO!==iso){S._subDateISO=iso;S.subRooms.clear();S.subSlots.clear()}
+ const sel=$('sub-code');if(!sel)return;
+ const previous=S._subKey;sel.innerHTML=courseOptions();
+ sel.value=[...sel.options].some(o=>o.value===previous)?previous:'';
+ $('sub-search-count').textContent=courseSearchCount();NS.showCourse();
+};
+NS.showCourse=()=>{
+ const key=val('sub-code'),previous=S._subKey;
+ if(previous!==key){S.subRooms.clear();S.subSlots.clear()}S._subKey=key;
+ const x=selectedSchedule(),info=$('course-info'),roomList=$('sub-room-list'),periodList=$('sub-period-list');
+ if(!info||!roomList||!periodList)return;
+ const iso=subDateISO(),day=subDayIndex(),rooms=subRoomsForDay(x),roomNames=Object.keys(rooms);
+ info.innerHTML=x?`<b>วิชา:</b> ${esc(x.course)}<br><b>ครูเจ้าของวิชา:</b> ${esc(x.owner)}<br><b>วันที่:</b> ${esc(subDateDisplay(iso))} (วัน${WEEKDAY_TH[day]})<br><b>ชั้น/ห้องของวันนั้น:</b> ${roomNames.length?esc(roomNames.join(', ')):'ไม่มีชั้น/ห้อง'}`:
+  iso?`<b>วัน${WEEKDAY_TH[day]} (${esc(subDateDisplay(iso))})</b><br>เลือกรหัสวิชาเพื่อแสดงเฉพาะชั้น/ห้องและคาบของวันนี้`:'กรุณาระบุวันที่สอนแทนให้ถูกต้องก่อนเลือกรหัสวิชา';
+ roomList.innerHTML=!iso?'<span class="muted">กรุณาระบุวันที่ก่อน</span>':!x?'<span class="muted">กรุณาเลือกรหัสวิชา</span>':roomNames.length?roomNames.map(room=>`<label><input type="checkbox" ${S.subRooms.has(room)?'checked':''} onchange="NS.toggleSubRoom('${encodeURIComponent(room)}',this.checked)"><span>${esc(room)} <small class="muted">(${rooms[room].length} คาบ)</small></span></label>`).join(''):'<span class="muted">ไม่มีชั้น/ห้องในวันดังกล่าว</span>';
+ NS.renderSubPeriods();
+};
+NS.renderSubPeriods=()=>{
+ const rooms=subRoomsForDay(selectedSchedule()),out=$('sub-period-list');if(!out)return;
+ const chosen=Object.keys(rooms).filter(room=>S.subRooms.has(room));
+ out.innerHTML=chosen.length?chosen.map(room=>`<div class="sub-room-group"><b>${esc(room)}</b><div class="sub-periods">${rooms[room].map(period=>`<label><input type="checkbox" ${S.subSlots.has(subSlotKey({room,period}))?'checked':''} onchange="NS.toggleSubPeriod('${encodeURIComponent(room)}','${encodeURIComponent(period)}',this.checked)"><span>คาบ ${esc(period)}</span></label>`).join('')}</div></div>`).join(''):'<span class="muted">เลือกชั้น/ห้องด้านบนก่อน จึงจะแสดงคาบของแต่ละชั้น/ห้อง</span>';
+ NS.updateSubPoints();
+};
+NS.toggleSubRoom=(encoded,on)=>{
+ const room=decodeURIComponent(encoded),rooms=subRoomsForDay(selectedSchedule());if(!Object.prototype.hasOwnProperty.call(rooms,room))return;
+ if(on){S.subRooms.add(room);rooms[room].forEach(period=>S.subSlots.add(subSlotKey({room,period})))}
+ else{S.subRooms.delete(room);rooms[room].forEach(period=>S.subSlots.delete(subSlotKey({room,period})))}
+ NS.showCourse();
+};
+NS.toggleSubPeriod=(encodedRoom,encodedPeriod,on)=>{
+ const room=decodeURIComponent(encodedRoom),period=decodeURIComponent(encodedPeriod),rooms=subRoomsForDay(selectedSchedule());
+ if(!S.subRooms.has(room)||!(rooms[room]||[]).includes(period))return;
+ const key=subSlotKey({room,period});on?S.subSlots.add(key):S.subSlots.delete(key);NS.updateSubPoints();
+};
+NS.selectAllSubPeriods=on=>{
+ const rooms=subRoomsForDay(selectedSchedule());
+ Object.keys(rooms).filter(room=>S.subRooms.has(room)).forEach(room=>rooms[room].forEach(period=>{const key=subSlotKey({room,period});on?S.subSlots.add(key):S.subSlots.delete(key)}));
+ NS.renderSubPeriods();
+};
+NS.updateSubPoints=()=>{
+ const slots=selectedSubSlots(),rate=Number(S.data.subCriterion?.score)||0,el=$('sub-score-hint');
+ if(el)el.innerHTML=`<b>เลือกแล้ว ${new Set(slots.map(x=>x.room)).size} ชั้น/ห้อง · ${slots.length} คาบสอน</b> × ${rate.toLocaleString('th-TH')} คะแนน/คาบ = <b>${(slots.length*rate).toLocaleString('th-TH')} คะแนน</b><br><small>นับแต่ละคู่ชั้น/ห้องและคาบแยกกัน คะแนนจะได้รับต่อเมื่อผ่านพิจารณา</small>`;
+};
+NS.saveSub=async()=>{
+ if(S.busy)return;let date;try{date=parseThaiDate(val('sub-date'))}catch(e){NS.toast(e.message,true);return}
+ const sch=selectedSchedule(),slots=selectedSubSlots();
+ const previous=S.subId?(S.data.subs||[]).find(x=>x.id===S.subId):null;
+ const files=[...($('sub-proofs')?.files||[])];
+ const d={id:S.subId||'',date,scheduleKey:sch?.key||'',code:sch?.code||'',teacherGroup:val('sub-teacher-group'),username:val('sub-user'),slots,assignmentReason:val('sub-assignment-reason').trim(),proofs:previous?.proofs||[]};
+ if(!sch){NS.toast('กรุณาเลือกรหัสวิชาที่คุณสอนตรงกับวันที่เลือก',true);return}
+ const selfName=x=>String(x||'').normalize('NFKC').replace(/[\s\u200b-\u200d\ufeff]+/g,'');
+ if(selfName(sch.owner)!==selfName(S.data.user.name)){NS.toast('เลือกรายวิชาได้เฉพาะวิชาของผู้เข้าสู่ระบบ',true);return}
+ if(!slots.length){NS.toast('กรุณาเลือกชั้น/ห้องและคาบสอนแทนอย่างน้อย 1 รายการ',true);return} 
+ if(!d.teacherGroup||!d.username||!S.data.users.some(u=>u.username===d.username&&u.group===d.teacherGroup)){NS.toast('กรุณาเลือกกลุ่มสาระและครูผู้สอนแทนให้ตรงกัน',true);return}
+ if(!d.assignmentReason){NS.toast('กรุณาระบุเหตุผลที่ต้องมอบหมายให้สอนแทน',true);return}
+ if(files.length>5||files.some(f=>!f.type.startsWith('image/'))||(!files.length&&!d.proofs.length)){NS.toast('กรุณาแนบภาพหลักฐาน 1–5 รูป (หรือใช้หลักฐานเดิมในการแก้ไข)',true);return}
+ const edited=!!d.id;NS.busy(true,edited?'กำลังแก้ไขและส่งพิจารณา...':'กำลังบันทึกคำขอสอนแทน...');
+ try{
+  if(files.length){d.proofs=await uploadPhotosFast(files)}
+  await api('saveSub',d);NS.clearSubProofPreview();S.subId='';S._subKey='';S._subDateISO='';S.subSearch='';S.subTeacherUsername='';S.subRooms.clear();S.subSlots.clear();S.data=await api('init');NS.render();NS.toast('บันทึกแล้ว: รอผู้มีสิทธิ์พิจารณา (คะแนนจะเข้าครูผู้สอนแทนเมื่ออนุมัติ)')}
+ catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}
+};
+NS.cancelSub=()=>{NS.clearSubProofPreview();S.subId='';S._subKey='';S._subDateISO='';S.subSearch='';S.subTeacherUsername='';S.subRooms.clear();S.subSlots.clear();NS.render()};
+NS.editSub=id=>{
+ id=decodeURIComponent(id);const x=S.data.subs.find(v=>String(v.id)===id);
+ if(!x){NS.toast('ไม่พบรายการสอนแทน กรุณาโหลดข้อมูลใหม่',true);return}
+ if(!((S.data.schedule||[]).some(v=>v.code===x.code&&v.course===x.course&&v.owner===x.owner))){
+   NS.toast('ไม่สามารถแก้ไขรายการนี้ได้: รายวิชาไม่ตรงกับผู้เข้าสู่ระบบหรือไม่อยู่ในตารางสอนล่าสุด',true);return;
+ }
+ S.subId=id;const sch=(S.data.schedule||[]).find(a=>a.code===x.code&&a.course===x.course&&a.owner===x.owner);
+ S._subKey=sch?.key||'';S._subDateISO=x.date;S.subSearch=x.code;S.subTeacherGroup=substituteGroupFor(x);S.subTeacherUsername=x.username;NS.clearSubProofPreview();
+ const roomMap=sch?.roomsByDay?.[String(new Date(x.date+'T00:00:00Z').getUTCDay())]||{};
+ const valid=x.slots||[];S.subRooms=new Set(valid.filter(slot=>(roomMap[slot.room]||[]).includes(slot.period)).map(slot=>slot.room));
+ S.subSlots=new Set(valid.filter(slot=>(roomMap[slot.room]||[]).includes(slot.period)).map(subSlotKey));
+ NS.render();NS.showCourse();$('sub-editor')?.scrollIntoView({behavior:'smooth',block:'start'});
+};
+NS.deleteSub=async id=>{
+ id=decodeURIComponent(id);if(S.busy)return;const x=S.data.subs.find(v=>String(v.id)===id);
+ if(!x){NS.toast('ไม่พบรายการสอนแทนที่ต้องการลบ',true);return}
+ if(!confirm(`ยืนยันลบรายการสอนแทน?\nวันที่: ${subDateDisplay(x.date)}\nรหัสวิชา: ${x.code}\nชั้น/ห้องและคาบ: ${subSlotDisplay(x)}\nครูผู้สอนแทน: ${x.name}\n\nระบบจะลบข้อมูลในชีท “สอนแทน” และยกเลิกคะแนนที่เกี่ยวข้อง (ถ้ามี)`))return;
+ NS.busy(true,'กำลังลบประวัติการสอนแทน...');
+ try{await api('deleteSub',{id});if(S.subId===id){S.subId='';S._subKey='';S._subDateISO='';S.subSearch='';S.subTeacherUsername='';S.subRooms.clear();S.subSlots.clear()}S.data=await api('init');NS.render();NS.toast('ลบรายการสอนแทนและยกเลิกคะแนนแล้ว')}
+ catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}
+};
+NS.subDetail=id=>{
+ id=decodeURIComponent(id);const x=(S.data.subs||[]).find(v=>String(v.id)===id);if(!x)return;
+ const c=S.data.subCriterion,u=S.data.user;
+ const mayReview=x.status==='รอพิจารณา'&&S.data.rights.review&&!!c&&(u.role==='SuperAdmin'||u.role==='กลุ่มบริหาร/อำนวยการ'||u.role==='User'||u.role===c.category);
+ NS.modal('ตรวจสอบการสอนแทน',`<div class="row space"><b>${esc(x.code)} · ${esc(x.course)}</b>${status(x.status)}</div><div class="line"></div><p><b>วันที่สอนแทน:</b> ${esc(subDateDisplay(x.date))}</p><p><b>ครูเจ้าของวิชา:</b> ${esc(x.owner)}</p><p><b>ครูที่ได้รับมอบหมายและเป็นผู้รับคะแนน:</b> ${esc(x.name)} (${esc(x.teacherGroup||substituteGroupFor(x)||'-')})</p><p><b>ชั้น/ห้อง:</b> ${esc((x.rooms||[]).join(', ')||'ไม่ระบุในข้อมูลเดิม')}</p><p><b>ชั้น/ห้องและคาบที่เลือก:</b><br>${esc(subSlotDisplay(x))}</p><p><b>จำนวนคาบรวม:</b> ${x.slotCount}</p><p><b>คะแนนต่อคาบ:</b> ${esc(c?.score??0)}</p><p><b>คะแนนเมื่อผ่าน:</b> ${esc(x.potential)} คะแนน</p><p><b>เหตุผลที่ต้องมอบหมายให้สอนแทน:</b></p><div class="alert sub-reason">${esc(x.assignmentReason||'ไม่ระบุในข้อมูลเดิม')}</div><p><b>หลักฐานประกอบการพิจารณา:</b></p>${subProofLinks(x)}<p><b>วันที่บันทึก:</b> ${esc(subDateDisplay(x.at))}</p>${x.reviewedAt?`<p><b>วันที่พิจารณา:</b> ${esc(subDateDisplay(x.reviewedAt))}</p>`:''}${x.status==='ไม่ผ่าน'?`<div class="alert" style="color:#b32836;background:#fff2f2"><b>เหตุผล:</b> ${esc(x.reason)}</div>`:''}${mayReview?`<div class="line"></div>${btn('✓ ผ่านการพิจารณา',"NS.reviewSub('"+encodeURIComponent(x.id)+"','ผ่าน')",'gold','')} ${btn('✕ ไม่ผ่าน',"NS.reviewSub('"+encodeURIComponent(x.id)+"','ไม่ผ่าน')",'red','')}`:''}`);
+};
+NS.reviewSub=async(id,outcome)=>{
+ if(outcome==='ไม่ผ่าน')return NS.modal('ระบุเหตุผลไม่ผ่านการสอนแทน',`<label class="field"><span>เหตุผลไม่ผ่าน</span><textarea id="sub-reject-reason" required></textarea></label>${btn('ยืนยันไม่ผ่าน',"NS.confirmSubReview('"+id+"','ไม่ผ่าน')",'red','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}`);
+ await NS.confirmSubReview(id,outcome);
+};
+NS.confirmSubReview=async(id,outcome)=>{
+ const reason=val('sub-reject-reason');if(outcome==='ไม่ผ่าน'&&!reason.trim()){NS.toast('กรุณาระบุเหตุผลที่ไม่ผ่าน',true);return}
+ NS.closeModal();try{await NS.call('reviewSub',{id:decodeURIComponent(id),status:outcome,reason},'บันทึกผลพิจารณาสอนแทนแล้ว')}catch(e){}
+};
+function renderPeriods(){const teachers=S.data.users.filter(x=>!S.group||x.group===S.group);return `${headline('กำหนดจำนวนคาบสอน','1 คาบ × ค่าคะแนนต่อคาบที่กำหนดในเกณฑ์คะแนน')}<div class="grid2"><div class="card"><h2>เลือกครูและจำนวนคาบต่อสัปดาห์</h2><div class="filter-row">${select('period-group',groups(),S.group,'ทุกกลุ่มสาระ')}${btn('กรอง','NS.periodFilter()')}</div><div class="checklist">${teachers.map(x=>`<label><input type="checkbox" ${S.selectedTeachers.has(x.username)?'checked':''} onchange="NS.periodSelect('${encodeURIComponent(x.username)}',this.checked)"><span style="flex:1">${esc(x.name)}<br><small class="muted">${esc(x.group)}</small></span>${S.selectedTeachers.has(x.username)?`<input class="input" style="width:90px" type="number" min="0" max="70" value="${attr(S.periodInputs[x.username]??S.data.periods.find(z=>z.username===x.username)?.count??0)}" onchange="NS.periodCount('${encodeURIComponent(x.username)}',this.value)" onclick="event.stopPropagation()">`:''}</label>`).join('')}</div><div class="line"></div><button class="btn gold" onclick="NS.savePeriods()">บันทึกจำนวนคาบ (${S.selectedTeachers.size} คน)</button></div><div class="card"><h2>นำเข้า Excel และประวัติการบันทึก</h2><div class="row" style="margin-bottom:15px">${btn('↓ ดาวน์โหลดเทมเพลต Excel','NS.excelTemplate(\'periods\')')}&nbsp;<label class="btn soft small">↑ นำเข้า Excel<input type="file" accept=".xlsx,.xls" hidden onchange="NS.readExcel(this,\'periods\')"></label></div><small class="muted">หัวคอลัมน์: ชื่อผู้ใช้, จำนวนคาบต่อสัปดาห์</small><div class="line"></div>${renderTable(['ครู','คาบ / สัปดาห์','คะแนน','จัดการ'],S.data.periods.map(x=>[esc(x.name),String(x.count),scoreLabel(x.score),btn('แก้ไข',"NS.editPeriods('"+x.username+"')")+' '+btn('ลบ',"NS.deletePeriods('"+x.id+"')",'red')]))}</div></div>`}
+NS.periodFilter=()=>{S.group=val('period-group');NS.render()};NS.periodSelect=(v,on)=>{const s=decodeURIComponent(v);on?S.selectedTeachers.add(s):S.selectedTeachers.delete(s);NS.render()};NS.periodCount=(v,n)=>{S.periodInputs[decodeURIComponent(v)]=n};
+NS.savePeriods=async()=>{const items=[...S.selectedTeachers].map(username=>({username,count:Number(S.periodInputs[username]??S.data.periods.find(x=>x.username===username)?.count??0)}));if(!items.length){NS.toast('กรุณาเลือกรายชื่อ',true);return}try{await NS.call('savePeriods',{items});S.selectedTeachers.clear();S.periodInputs={}}catch(e){}};
+NS.editPeriods=username=>{S.selectedTeachers.add(username);S.group=S.data.users.find(x=>x.username===username)?.group||'';NS.render();window.scrollTo(0,0)};
+NS.deletePeriods=async id=>{if(confirm('ยืนยันลบข้อมูลคาบสอนและยกเลิกคะแนนที่เกี่ยวข้อง?'))try{await NS.call('deletePeriods',{id})}catch(e){}};
+function rating(n){return n>=324?{level:5,name:'ดีเยี่ยม',text:'ปฏิบัติงานได้ดีมาก เป็นแบบอย่างที่ดี ผลงานโดดเด่น บรรลุเป้าหมายทุกประการ และมีผลสัมฤทธิ์สูงกว่าเป้าหมาย'}:n>=288?{level:4,name:'ดีมาก',text:'ปฏิบัติงานได้ดีมาก บรรลุเป้าหมายทุกประการและมีผลสัมฤทธิ์สูงกว่าเป้าหมาย'}:n>=252?{level:3,name:'ดี',text:'ปฏิบัติงานได้ดี บรรลุเป้าหมายทุกประการ'}:n>=216?{level:2,name:'พอใช้',text:'ปฏิบัติงานได้พอใช้ บรรลุเป้าหมายบางประการ หรือบรรลุเป้าหมายแต่ยังต้องปรับปรุงบางด้าน'}:{level:1,name:'ปรับปรุง',text:'ปฏิบัติงานยังไม่บรรลุเป้าหมาย หรือมีผลการปฏิบัติงานต่ำกว่าเกณฑ์ที่กำหนด จำเป็นต้องได้รับการพัฒนา/ปรับปรุง'}}
+function scoresInPeriod(username){let f=S._reportStart||'',t=S._reportEnd||'';return S.data.scores.filter(x=>x.username===username&&(!f||onlyDate(x.at)>=f)&&(!t||onlyDate(x.at)<=t))}
+function reportUsers(){return S.data.users.filter(x=>!S.reportGroup||x.group===S.reportGroup)}
+function renderReports(){const people=reportUsers();return `${headline('รายงานผลการประเมิน','พิมพ์รายงานทางการรูปแบบ A4 ด้วยฟอนต์ Sarabun')}<div class="card"><div class="tabs">${[['individual','รายบุคคล'],['levels','ตามกลุ่มระดับคะแนน'],['rank','ตามอันดับคะแนน']].map(x=>tab(x[1],"NS.reportType('"+x[0]+"')",S.reportType===x[0])).join('')}</div><div class="grid3">${field('ตั้งแต่วันที่','report-start','','date',S._reportStart||'')}${field('ถึงวันที่','report-end','','date',S._reportEnd||'')}<label class="field"><span>กลุ่มสาระ / สายงาน</span>${select('report-group',groups(),S.reportGroup,'ทุกกลุ่มสาระ')}</label></div><div class="row" style="margin-bottom:13px"><button class="btn soft" onclick="NS.filterReport()">แสดงรายชื่อ</button><button class="btn gold" onclick="NS.printReports()">▤ สร้างรายงาน / พิมพ์ A4</button></div>${S.reportType==='individual'?`<div class="checklist">${people.map(x=>`<label><input type="checkbox" ${S.reportSelected.has(x.username)?'checked':''} onchange="NS.pickReport('${encodeURIComponent(x.username)}',this.checked)"><span>${esc(x.name)} · <small class="muted">${esc(x.position)} / ${esc(x.group)}</small></span></label>`).join('')}</div><p class="muted" style="margin-top:10px">เลือกแล้ว ${S.reportSelected.size} คน</p>`:'<p class="muted">ทุกประเภทรายงานคำนวณจากคะแนนเพิ่ม − คะแนนที่ถูกหัก เฉพาะช่วงวันที่เลือก (ไม่รวมคะแนนเต็มตั้งต้น)</p>'}</div><div id="report-preview"></div>`}
+NS.reportType=t=>{S.reportType=t;NS.render()};NS.filterReport=()=>{let a,b;try{a=isoFrom('report-start');b=isoFrom('report-end');if(a&&b&&a>b)throw Error('วันที่เริ่มต้นต้องไม่เกินวันที่สิ้นสุด')}catch(e){NS.toast(e.message,true);return}S.reportGroup=val('report-group');S._reportStart=a;S._reportEnd=b;NS.render()};NS.pickReport=(s,on)=>{s=decodeURIComponent(s);on?S.reportSelected.add(s):S.reportSelected.delete(s)};
+// รายงานจัดอันดับและตามระดับคะแนนใช้คะแนนสุทธิเดียวกับรายงานรายบุคคลโดยตรง
+function scoreSummary(people){return people.map(u=>({u,score:totals(scoresInPeriod(u.username)).adjustment}))}
+function reportHeading(label){return `<div class="r-head"><img src="${LOGO}" alt="ตราโรงเรียน"><h2>${esc(label)}<br>โรงเรียนนราสิกขาลัย</h2></div>`}
+function reportDates(){return `<div class="r-meta">ช่วงวันที่ <b>${esc(S._reportStart?dateTH(S._reportStart):'เริ่มต้นทั้งหมด')}</b> ถึง <b>${esc(S._reportEnd?dateTH(S._reportEnd):'ปัจจุบัน')}</b></div>`}
+// รายงานรายบุคคล: คะแนนสุทธิเป็นผลรวมคะแนนที่เพิ่มและคะแนนที่หักเท่านั้น
+// รายการด้านลบจะแสดงเฉพาะเมื่อมีการหักจริงภายในช่วงวันที่ของรายงาน
+function individualReport(u){
+  const scores=scoresInPeriod(u.username);
+  const summary=totals(scores);
+  const total=summary.adjustment;
+  const r=rating(total);
+  let index=0;
+  const categoryNames=[...new Set([...S.data.categories,...scores.map(x=>x.category).filter(Boolean)])];
+  const detailRows=categoryNames.map(cat=>{
+    const configured=S.data.criteria.filter(c=>c.category===cat);
+    const knownItems=new Set(configured.map(c=>c.item));
+    const visible=configured.filter(c=>Number(c.score)>=0 || scores.some(x=>x.category===cat&&x.item===c.item&&Number(x.score)<0));
+    // คะแนนที่ถูกบันทึกแล้วแต่เกณฑ์ถูกลบ/เปลี่ยนภายหลัง ยังคงปรากฏในประวัติรายงาน
+    const historic=[...new Set(scores.filter(x=>x.category===cat&&!knownItems.has(x.item)).map(x=>x.item))]
+      .map(item=>{const dr=(S.data.dutyRules||[]).find(x=>x.category===cat&&x.item===item);return {item,score:dr?dr.per:null};});
+    const items=[...visible,...historic];
+    if(!items.length)return '';
+    // คอลัมน์ “คะแนน” ในแถวหมวด = คะแนนเต็มรายหมวดจากหน้าตั้งค่าของ SuperAdmin
+    // ใช้ข้อมูลตั้งค่าคะแนนเต็มโดยตรง ไม่ใช่ผลรวมคะแนนจากรายการเกณฑ์
+    const categoryMaximum=S.data.maximums.find(m=>String(m.category).trim()===cat.trim());
+    const categoryFullScore=categoryMaximum ? (Number(categoryMaximum.max)||0) : 0;
+    // คอลัมน์ “คะแนนที่ได้” ในแถวหมวด = คะแนนเพิ่มและคะแนนหักที่เกิดขึ้นจริงในช่วงรายงาน
+    const categoryEarned=scores.filter(x=>x.category===cat)
+      .reduce((sum,x)=>sum+(Number(x.score)||0),0);
+    const categoryLabel=/^ด้าน/.test(cat.trim())?cat:'ด้าน'+cat;
+    const rows=items.map(c=>{
+      const gained=scores.filter(x=>x.category===cat&&x.item===c.item)
+        .reduce((sum,x)=>sum+(Number(x.score)||0),0);
+      const criterionScore=c.score===null?'—':Number(c.score).toLocaleString('th-TH');
+      return `<tr><td class="r-num">${++index}</td><td>${esc(c.item)}</td><td class="r-num">${criterionScore}</td><td class="r-num">${gained.toLocaleString('th-TH')}</td></tr>`;
+    }).join('');
+    return `<tr class="report-category"><td colspan="2"><b>${esc(categoryLabel)}</b></td><td class="r-num">${categoryFullScore.toLocaleString('th-TH')}</td><td class="r-num">${categoryEarned.toLocaleString('th-TH')}</td></tr>${rows}`;
+  }).join('');
+  return `<section class="report-sheet report-individual">${reportHeading('ผลการประเมินผลการปฏิบัติงานข้าราชการครูและบุคลากรทางการศึกษา')}${reportDates()}<div class="r-meta"><b>ชื่อ-สกุล:</b> ${esc(u.name)} &nbsp; <b>ตำแหน่ง:</b> ${esc(u.position||'-')}<br><b>กลุ่มสาระการเรียนรู้ / สายงาน:</b> ${esc(u.group||'-')}</div><table><thead><tr><th class="r-num" style="width:48px">ลำดับ</th><th>รายการประเมิน</th><th class="r-num" style="width:75px">คะแนน</th><th class="r-num" style="width:75px">คะแนนที่ได้</th></tr></thead><tbody>${detailRows||'<tr><td colspan="4" class="r-empty">ไม่พบเกณฑ์หรือรายการคะแนนในช่วงวันที่เลือก</td></tr>'}</tbody></table><div class="score-total">คะแนนเพิ่ม ${summary.plus.toLocaleString('th-TH')} − คะแนนที่ถูกหัก ${Math.abs(summary.minus).toLocaleString('th-TH')} = คะแนนรวมสุทธิ ${total.toLocaleString('th-TH')} คะแนน</div><div class="rating"><b>ผลการประเมิน: ระดับ ${r.level} (${r.name})</b><br>${esc(r.text)}</div><div class="r-meta" style="margin-top:55px;display:flex;justify-content:space-around"><div>ลงชื่อ................................................ผู้รับการประเมิน</div><div>ลงชื่อ................................................ผู้ประเมิน</div></div></section>`;
+}
+function overviewReport(mode){const arr=scoreSummary(reportUsers()).sort((a,b)=>b.score-a.score);const rows=mode==='rank'?arr.map((x,i)=>[String(i+1),esc(x.u.name),esc(x.u.group),x.score.toLocaleString('th-TH'),rating(x.score).name]):[5,4,3,2,1].flatMap(level=>arr.filter(x=>rating(x.score).level===level).map(x=>[String(level),esc(x.u.name),esc(x.u.group),x.score.toLocaleString('th-TH'),rating(x.score).name]));return `<section class="report-sheet report-overview">${reportHeading(mode==='rank'?'รายงานผลการประเมินตามอันดับคะแนน':'รายงานผลการประเมินตามกลุ่มระดับคะแนน')}${reportDates()}<p class="r-meta">จำนวนบุคลากร: ${arr.length} คน</p>${renderTable([mode==='rank'?'อันดับ':'ระดับ','ชื่อ-สกุล','กลุ่มสาระ / สายงาน','คะแนนที่ได้','ผลการประเมิน'],rows)}<div class="r-meta" style="margin-top:45px;text-align:right">ลงชื่อ................................................ผู้รับรองรายงาน</div></section>`}
+NS.printReports=()=>{let a,b;try{a=isoFrom('report-start');b=isoFrom('report-end');if(a&&b&&a>b)throw Error('วันที่เริ่มต้นต้องไม่เกินวันที่สิ้นสุด')}catch(e){NS.toast(e.message,true);return}S._reportStart=a;S._reportEnd=b;S.reportGroup=val('report-group');let html;if(S.reportType==='individual'){const users=S.data.users.filter(x=>S.reportSelected.has(x.username));if(!users.length){NS.toast('กรุณาเลือกบุคลากรอย่างน้อย 1 คน',true);return}html=users.map(individualReport).join('')}else html=overviewReport(S.reportType);$('report-preview').innerHTML=html;$('print-root').innerHTML=html;setTimeout(()=>window.print(),400)};
+function renderAdmin(){return `${headline('ตั้งค่าระบบ','เฉพาะบัญชี SuperAdmin')}<div class="tabs">${[['rights','กำหนดสิทธิการใช้งาน'],['scoreAssign','กำหนดบันทึกคะแนน'],['criteria','เกณฑ์และคะแนนเต็ม'],['duties','ตั้งค่าเกณฑ์หน้าเสาธงและเวรประจำวัน'],['users','ข้อมูลผู้ใช้'],['allowed','รายการที่ User บันทึกได้']].map(x=>tab(x[1],"NS.adminTab('"+x[0]+"')",S.adminTab===x[0])).join('')}</div>${({rights:renderRights,scoreAssign:renderScoreAssign,criteria:renderCriteriaAdmin,duties:renderDutyAdmin,users:renderUsersAdmin,allowed:renderAllowed})[S.adminTab]()}`}
+NS.adminTab=t=>{S.adminTab=t;NS.render()};
+// กำหนดรายการเกณฑ์ที่แต่ละบัญชีมีสิทธิ์ใช้ในการบันทึกคะแนน (แยกจากผู้รับการประเมิน)
+function assignmentStaff(){const q=S.assignmentSearch.trim().toLowerCase();return S.data.users.filter(u=>(!S.assignmentGroup||u.group===S.assignmentGroup)&&(!q||u.name.toLowerCase().includes(q)||u.username.toLowerCase().includes(q)));}
+function assignedForStaff(username){return new Set((S.data.scoreAssignments||[]).filter(a=>a.username===username).map(a=>a.id));}
+function assignmentAllowedCriteria(){const names=[...S.assignmentSelected],users=S.data.users.filter(u=>names.includes(u.username));if(!users.length)return [];return S.data.criteria.filter(c=>users.every(u=>!S.data.categories.includes(u.role)||u.role===c.category));}
+function assignmentStaffRows(){return assignmentStaff().map(u=>`<label><input type="checkbox" ${S.assignmentSelected.has(u.username)?'checked':''} onchange="NS.assignmentPickStaff('${encodeURIComponent(u.username)}',this.checked)"><span style="flex:1"><b>${esc(u.name)}</b><br><small class="muted">${esc(u.group||'-')} · ${esc(u.role)}</small></span><span class="pill">${(S.data.scoreAssignments||[]).filter(a=>a.username===u.username).length} รายการ</span></label>`).join('')||'<div class="empty">ไม่พบรายชื่อบุคลากร</div>'}
+function assignmentCriterionRows(){const criteria=assignmentAllowedCriteria();if(!S.assignmentSelected.size)return '<div class="empty">เลือกบุคลากรอย่างน้อย 1 คน เพื่อแสดงรายการเกณฑ์คะแนนตามบทบาท</div>';if(!criteria.length)return '<div class="alert">ไม่พบเกณฑ์คะแนนที่ตรงกันสำหรับบทบาทของรายชื่อที่เลือก กรุณาเลือกบุคลากรที่มีบทบาทเดียวกัน หรือตั้งค่าเกณฑ์คะแนนก่อน</div>';return S.data.categories.filter(cat=>criteria.some(c=>c.category===cat)).map(cat=>`<div style="border:1px solid var(--line);border-radius:12px;padding:12px;margin:9px 0"><b style="color:var(--deep)">${esc(cat)}</b><div class="checklist">${criteria.filter(c=>c.category===cat).map(c=>`<label><input type="checkbox" ${S.assignmentCriteria.has(c.id)?'checked':''} onchange="NS.assignmentPickCriterion('${c.id}',this.checked)"><span style="flex:1">${esc(c.item)}<br><small class="muted">${c.score>=0?'คะแนนด้านบวก':'คะแนนด้านลบ'}</small></span>${scoreLabel(c.score)}</label>`).join('')}</div></div>`).join('')}
+function renderScoreAssign(){return `<div class="grid2"><div class="card"><h2>1. เลือกบุคลากรผู้บันทึกคะแนน (หลายคนได้)</h2><p class="muted" style="margin-bottom:12px">ค้นหาชื่อหรือเลือกกลุ่มสาระ แล้วติ๊กบุคลากรที่ต้องการกำหนดรายการเกณฑ์คะแนน</p><label class="field"><span>กลุ่มสาระการเรียนรู้ / สายงาน</span>${select('asg-group',groups(),S.assignmentGroup,'ทุกกลุ่มสาระ')}</label><label class="field"><span>ค้นหาชื่อ-สกุล / ชื่อผู้ใช้</span><input class="input" id="asg-search" value="${attr(S.assignmentSearch)}" placeholder="พิมพ์ชื่อหรือชื่อผู้ใช้" oninput="NS.assignmentSearchChanged(this.value)"></label><div class="row" style="margin-bottom:10px">${btn('กรองรายชื่อ','NS.assignmentFilter()')}${btn('เลือกทั้งหมดที่ค้นพบ','NS.assignmentSelectVisible()','soft')}${btn('ล้างการเลือก','NS.assignmentClear()','gray')}</div><div class="checklist" id="asg-staff-list">${assignmentStaffRows()}</div><div class="line"></div><b>เลือกแล้ว ${S.assignmentSelected.size} คน</b><div style="margin-top:8px">${[...S.assignmentSelected].map(name=>`<span class="tag">${esc(S.data.users.find(u=>u.username===name)?.name||name)}</span>`).join('')}</div></div><div class="card"><h2>2. กำหนดหมวดหมู่และรายการเกณฑ์คะแนน</h2><div class="alert">รายการเกณฑ์แสดงตามบทบาทของผู้ที่เลือก หากเลือกหลายบทบาทพร้อมกัน จะแสดงเฉพาะหมวดที่ทุกคนมีสิทธิ์บันทึก และผู้ใช้ต้องมีสิทธิ์ “บันทึกคะแนน” จากแท็บกำหนดสิทธิด้วย</div><div id="asg-criteria-list">${assignmentCriterionRows()}</div><div class="line"></div><p id="asg-count" class="muted" style="margin-bottom:12px">เลือก ${S.assignmentCriteria.size} เกณฑ์ สำหรับ ${S.assignmentSelected.size} คน</p><button class="btn gold full" ${!S.assignmentSelected.size?'disabled':''} onclick="NS.assignmentSave()">บันทึกการกำหนดรายการเกณฑ์คะแนน</button><p class="muted" style="margin-top:10px;font-size:12px">การบันทึกจะใช้ชุดเกณฑ์ที่ติ๊กแทนชุดเดิมของบุคลากรที่เลือกเท่านั้น ไม่กระทบผู้อื่น หากไม่ติ๊กเกณฑ์เลยจะเป็นการยกเลิกสิทธิ์ทั้งหมดของรายชื่อที่เลือก</p></div></div>`}
+NS.assignmentSearchChanged=q=>{S.assignmentSearch=q;const root=$('asg-staff-list');if(root)root.innerHTML=assignmentStaffRows()};
+NS.assignmentFilter=()=>{S.assignmentGroup=val('asg-group');S.assignmentSearch=val('asg-search');NS.render()};
+NS.assignmentSync=()=>{const names=[...S.assignmentSelected];const allowed=new Set(assignmentAllowedCriteria().map(c=>c.id));S.assignmentCriteria=new Set([...allowed].filter(id=>names.every(n=>assignedForStaff(n).has(id))));};
+NS.assignmentPickStaff=(encoded,checked)=>{const n=decodeURIComponent(encoded);checked?S.assignmentSelected.add(n):S.assignmentSelected.delete(n);NS.assignmentSync();NS.render()};
+NS.assignmentSelectVisible=()=>{assignmentStaff().forEach(u=>S.assignmentSelected.add(u.username));NS.assignmentSync();NS.render()};
+NS.assignmentClear=()=>{S.assignmentSelected.clear();S.assignmentCriteria.clear();NS.render()};
+NS.assignmentPickCriterion=(id,checked)=>{checked?S.assignmentCriteria.add(id):S.assignmentCriteria.delete(id);const c=$('asg-count');if(c)c.textContent=`เลือก ${S.assignmentCriteria.size} เกณฑ์ สำหรับ ${S.assignmentSelected.size} คน`};
+NS.assignmentSave=async()=>{const names=[...S.assignmentSelected],ids=[...S.assignmentCriteria];if(!names.length){NS.toast('กรุณาเลือกบุคลากร',true);return}if(!confirm(ids.length?`ยืนยันกำหนด ${ids.length} เกณฑ์ ให้บุคลากร ${names.length} คน? (แทนที่การกำหนดเดิม)`:`ยืนยันยกเลิกเกณฑ์ที่กำหนดไว้ทั้งหมดของบุคลากร ${names.length} คน?`))return;NS.busy(true);try{let saved=0;for(let i=0;i<names.length;i+=10){await api('assignScoreCriteria',{usernames:names.slice(i,i+10),criteriaIds:ids});saved+=names.slice(i,i+10).length;}S.data=await api('init');NS.assignmentSync();NS.render();NS.toast('บันทึกการกำหนดเกณฑ์สำเร็จ '+saved+' คน')}catch(e){NS.toast('บันทึกไม่ครบทุกคน: '+e.message,true);try{S.data=await api('init');NS.assignmentSync();NS.render()}catch(_){}}finally{NS.busy(false)}};
+
+function rightsVisible(){const q=S.rightsSearch.trim().toLocaleLowerCase('th');return S.data.users.filter(x=>(!S.rightsGroup||x.group===S.rightsGroup)&&(!q||x.name.toLocaleLowerCase('th').includes(q)||x.username.toLocaleLowerCase('th').includes(q)));}
+function rightsStaffRows(){return rightsVisible().map(u=>`<label><input type="checkbox" ${S.rightsSelected.has(u.username)?'checked':''} onchange="NS.rightsPick('${encodeURIComponent(u.username)}',this.checked)"><span style="flex:1"><b>${esc(u.name)}</b><br><small class="muted">${esc(u.group||'-')} · ${esc(u.username)}</small></span></label>`).join('')||'<div class="empty">ไม่พบบุคลากรที่ค้นหา</div>';}
+function renderRights(){const visible=rightsVisible(),all=visible.length>0&&visible.every(u=>S.rightsSelected.has(u.username));return `<div class="card"><h2>กำหนดสิทธิของครูและบุคลากร</h2><div class="grid2"><label class="field"><span>กลุ่มสาระการเรียนรู้</span>${select('rights-group',groups(),S.rightsGroup,'ทุกกลุ่มสาระ')}</label><label class="field"><span>ค้นหาชื่อครู / บุคลากร</span><input class="input" type="search" id="rights-search" placeholder="ชื่อ-สกุล หรือชื่อผู้ใช้" value="${attr(S.rightsSearch)}" oninput="NS.rightsSearchChanged(this.value)"></label></div><div class="row" style="margin-bottom:12px"><button class="btn soft small" onclick="NS.rightsGroup()">กรองรายชื่อ</button><button class="btn gray small" onclick="NS.rightsClear()">ล้างการเลือกทั้งหมด</button></div><div class="row space" style="margin-bottom:8px"><label class="row" style="cursor:pointer"><input id="rights-all-visible" type="checkbox" style="width:18px;height:18px;accent-color:var(--blue)" ${all?'checked':''} onchange="NS.rightsAllVisible(this.checked)"> <b>เลือกทั้งหมดในรายการที่แสดง (${visible.length} คน)</b></label></div><div class="rights-checklist" id="rights-staff-list">${rightsStaffRows()}</div><p class="rights-selected" id="rights-count">เลือกไว้ ${S.rightsSelected.size} คน (ไม่จำกัดเฉพาะกลุ่มที่แสดง)</p><div class="row"><button class="btn gold" id="rights-apply" onclick="NS.openRights()">กำหนดสิทธิบุคลากรที่เลือก (${S.rightsSelected.size} คน)</button></div></div><div class="card"><h2>สิทธิที่กำหนดไว้</h2>${renderTable(['ชื่อผู้ใช้','กลุ่มสาระ','บันทึกคะแนน','รายงาน','พิจารณา','สอนแทน','คาบสอน','กิจกรรมและเวร','จัดตารางเวร'],S.data.perms.map(x=>[esc(x.username),esc(x.group),...x.flags.map(v=>v?'✓':'–')]))}</div>`;}
+NS.rightsGroup=()=>{S.rightsGroup=val('rights-group');S.rightsSearch=val('rights-search');NS.render()};
+NS.rightsSearchChanged=q=>{S.rightsSearch=q;NS.updateRightsList()};
+NS.updateRightsList=()=>{const list=$('rights-staff-list');if(list)list.innerHTML=rightsStaffRows();const all=$('rights-all-visible');if(all){const shown=rightsVisible();all.checked=!!shown.length&&shown.every(x=>S.rightsSelected.has(x.username));all.indeterminate=!!shown.length&&!all.checked&&shown.some(x=>S.rightsSelected.has(x.username));}const count=$('rights-count');if(count)count.textContent=`เลือกไว้ ${S.rightsSelected.size} คน (ไม่จำกัดเฉพาะกลุ่มที่แสดง)`;const b=$('rights-apply');if(b)b.textContent=`กำหนดสิทธิบุคลากรที่เลือก (${S.rightsSelected.size} คน)`};
+NS.rightsPick=(encoded,checked)=>{const username=decodeURIComponent(encoded);checked?S.rightsSelected.add(username):S.rightsSelected.delete(username);NS.updateRightsList()};
+NS.rightsAllVisible=checked=>{rightsVisible().forEach(u=>checked?S.rightsSelected.add(u.username):S.rightsSelected.delete(u.username));NS.updateRightsList()};
+NS.rightsClear=()=>{S.rightsSelected.clear();NS.updateRightsList()};
+NS.openRights=()=>{const selected=[...S.rightsSelected];if(!selected.length){NS.toast('กรุณาเลือกครูหรือบุคลากรอย่างน้อย 1 คน',true);return}S._rightsUsers=selected;const keys=['saveScore','report','review','substitute','periods','attendance','roster'],names=['บันทึกคะแนน','รายงาน','พิจารณาผลปฏิบัติงาน','บันทึกสอนแทน','กำหนดจำนวนคาบสอน','บันทึกการปฏิบัติหน้าที่และเวรประจำวัน','จัดตารางเวรประจำวัน'];const single=selected.length===1,u=single?S.data.users.find(x=>x.username===selected[0]):null,p=single?S.data.perms.find(x=>x.username===selected[0]):null;NS.modal(single?'กำหนดสิทธิ: '+esc(u.name):`กำหนดสิทธิให้บุคลากร ${selected.length} คน`,`${single?'<p class="muted">ติ๊กเพื่ออนุญาตสิทธิ์ และเอาติ๊กออกเพื่อไม่อนุญาต</p>':'<div class="alert">กรณีเลือกหลายคน กำหนดต่อสิทธิ์ว่า “เปิดสิทธิ์”, “ปิดสิทธิ์” หรือ “ไม่เปลี่ยนสิทธิ์เดิม” เพื่อไม่แก้ไขสิทธิ์อื่นโดยไม่ตั้งใจ</div>'}<div class="checklist">${names.map((n,i)=>single?`<label><input id="perm-${i}" type="checkbox" ${p?.flags[i]?'checked':''}><span>${esc(n)}</span></label>`:`<label class="row space"><span>${esc(n)}</span><select id="perm-${i}" class="input" style="width:auto;min-width:145px"><option value="keep">ไม่เปลี่ยน</option><option value="allow">เปิดสิทธิ์</option><option value="deny">ปิดสิทธิ์</option></select></label>`).join('')}</div><div class="line"></div>${btn('บันทึกสิทธิ','NS.saveRights()','gold','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}`)};
+NS.saveRights=async()=>{const selected=S._rightsUsers||[],keys=['saveScore','report','review','substitute','periods','attendance','roster'];if(!selected.length)return;if(selected.length===1){const flags={};keys.forEach((k,i)=>flags[k]=$('perm-'+i).checked);NS.closeModal();try{await NS.call('setPermission',{username:selected[0],flags});S.rightsSelected.clear();NS.render()}catch(e){};return;}const flags={};keys.forEach((k,i)=>flags[k]=val('perm-'+i));if(keys.every(k=>flags[k]==='keep')){NS.toast('กรุณาเลือกสิทธิ์ที่ต้องการเปลี่ยนอย่างน้อยหนึ่งรายการ',true);return}NS.closeModal();NS.busy(true,'กำลังบันทึกสิทธิหลายบัญชี...');try{let count=0;for(let i=0;i<selected.length;i+=30){const result=await api('setPermissionsBulk',{usernames:selected.slice(i,i+30),flags});count+=result.count||0}Object.assign(S.data,await api('readPermissions'));S.rightsSelected.clear();NS.render();NS.toast('กำหนดสิทธิสำเร็จ '+count+' คน')}catch(e){NS.toast('อาจบันทึกบางส่วนแล้ว: '+e.message,true);try{S.data=await api('init');NS.render()}catch(_){}}finally{NS.busy(false)}};
+function renderCriteriaAdmin(){
+ const nav=[['criteria','เกณฑ์คะแนน'],['training','เกณฑ์ครั้งที่ 1–3 อบรม'],['award','ระดับผลงานรางวัล'],['volunteer','เกณฑ์จิตอาสา'],['max','คะแนนเต็มรายหมวด']];
+ return `<div class="tabs">${nav.map(x=>tab(x[1],"NS.setCriteriaSubTab('"+x[0]+"')",S.criteriaSubTab===x[0])).join('')}</div>`+
+ ({criteria:renderBaseCriteria,training:renderTrainingCountSettings,award:renderAwardLevelSettings,volunteer:renderVolunteerSettings,max:renderMaximumSettings})[S.criteriaSubTab]();
+}
+NS.setCriteriaSubTab=t=>{S.criteriaSubTab=t;NS.render()};
+function renderBaseCriteria(){const items=S.data.criteria;return `<div class="card"><div class="row space"><h2>เกณฑ์คะแนน</h2><div class="row">${btn('+ เพิ่มรายการประเมิน','NS.criterionEditor()','gold')} ${btn('↓ เทมเพลต Excel','NS.excelTemplate(\'criteria\')')} <label class="btn soft small">↑ นำเข้า Excel<input type="file" accept=".xlsx,.xls" hidden onchange="NS.readExcel(this,\'criteria\')"></label></div></div><div class="alert">กำหนดคะแนนบวกหรือคะแนนหักตามเดิม แล้วนำเกณฑ์ด้านบวกไปผูกกับเกณฑ์นับครั้งหรือระดับผลงานรางวัล</div>${renderTable(['รายการประเมิน','หมวดหมู่','คะแนน','จัดการ'],items.map((x,i)=>[esc(x.item),esc(x.category),scoreLabel(x.score),btn('แก้ไข',"NS.criterionEditor("+i+")")+' '+btn('ลบ',"NS.deleteCriterion("+i+")",'red')]))}</div>`}
+function renderMaximumSettings(){return `<div class="card"><h2>กำหนดคะแนนเต็มรายหมวดหมู่</h2><div class="grid2">${S.data.categories.map((c,i)=>`<label class="field"><span>${esc(c)}</span><input id="max-${i}" type="number" min="0" class="input" value="${S.data.maximums.find(x=>x.category===c)?.max||0}"></label>`).join('')}</div><div class="row space"><b>คะแนนเต็มรวมปัจจุบัน ${S.data.maximums.reduce((a,b)=>a+b.max,0)} คะแนน</b>${btn('บันทึกคะแนนเต็ม','NS.saveMax()','gold','')}</div></div>`}
+function ruleCategorySelect(id,on){return `<label class="field"><span>หมวดหมู่</span><select id="${id}" class="input" onchange="${on}">${S.data.categories.map(c=>`<option value="${attr(c)}">${esc(c)}</option>`).join('')}</select></label>`}
+function countPositiveCriteria(cat){return S.data.criteria.filter(x=>x.category===cat&&Number(x.score)>0)}
+function renderTrainingCountSettings(){const rules=S.data.countRules||[];return `<div class="card"><h2>กำหนดคะแนนอบรม ตามจำนวนครั้งที่ผ่านการพิจารณา</h2><p class="muted">คะแนนครั้งที่ 1, 2 และ 3 คือ <b>คะแนนรวมปัจจุบัน</b> ไม่ใช่คะแนนที่บวกเพิ่มแต่ละครั้ง เมื่ออนุมัติครั้งที่ 2–3 ระบบจะแก้ไขคะแนนเดิม และครั้งที่ 4 เป็นต้นไปจะใช้คะแนนครั้งที่ 3 ตลอด โดยในแต่ละหมวดใช้เกณฑ์อบรมได้เพียงรายการเดียว</p><div class="grid2">${ruleCategorySelect('tc-category','NS.countRuleItems()')}<label class="field"><span>รายการเกณฑ์ที่จะให้ระบบเลือกอัตโนมัติ</span><select id="tc-item" class="input"></select></label></div><div class="grid2">${[1,2,3].map((n)=>`<label class="field"><span>คะแนนรวมเมื่อผ่านครั้งที่ ${n}</span><input class="input" type="number" id="tc-score-${n}" min="0" max="10000" step="0.01" value="${n}"></label>`).join('')}</div><div class="alert">ตัวอย่าง: ครั้งที่ 1 = 2, ครั้งที่ 2 = 5, ครั้งที่ 3 = 8 คะแนน เมื่อผ่านครั้งที่ 4, 5 หรือมากกว่านั้นยังคง 8 คะแนน • รายการเกณฑ์ไม่ปรากฏให้ผู้ใช้เลือกในฟอร์ม</div><div class="row">${btn('บันทึกเกณฑ์อบรมและใช้กับฟอร์ม','NS.saveCountRule()','gold','')}</div></div><div class="card"><h2>เกณฑ์ที่กำหนดไว้</h2>${renderTable(['หมวดหมู่','รายการประเมิน','ครั้งที่ 1','ครั้งที่ 2','ครั้งที่ 3','สถานะ','จัดการ'],rules.map((r,i)=>[esc(r.category),esc(r.item),scoreLabel(r.stage?.[0]||0),scoreLabel(r.stage?.[1]||0),scoreLabel(r.stage?.[2]||0),r.active?'กำลังใช้งาน':r.hasActive?'ไม่ได้ใช้งาน':'ข้อมูลเดิม (กรุณาตรวจสอบ)',btn('แก้ไข / ตั้งเป็นเกณฑ์หลัก',`NS.editCountRule(${i})`)]),'ยังไม่ได้กำหนดเกณฑ์อบรม')}</div>`}
+NS.countRuleItems=()=>{const el=$('tc-item');if(!el)return;const items=countPositiveCriteria(val('tc-category'));el.innerHTML=items.map(x=>`<option value="${attr(x.item)}">${esc(x.item)} (+${x.score} คะแนนในเกณฑ์คะแนน)</option>`).join('');};
+NS.editCountRule=i=>{const x=S.data.countRules[i];if(!x)return;$('tc-category').value=x.category;NS.countRuleItems();$('tc-item').value=x.item;[1,2,3].forEach(n=>{$('tc-score-'+n).value=x.stage?.[n-1]??0});window.scrollTo({top:0,behavior:'smooth'});};
+NS.saveCountRule=async()=>{const d={category:val('tc-category'),item:val('tc-item'),score1:Number(val('tc-score-1')),score2:Number(val('tc-score-2')),score3:Number(val('tc-score-3'))};if(!d.item||[d.score1,d.score2,d.score3].some(v=>!Number.isFinite(v)||v<0)||d.score1>d.score2||d.score2>d.score3){NS.toast('กรุณากำหนดคะแนนทั้ง 3 ครั้งแบบไม่ลดลง',true);return}try{await NS.call('saveCountRule',d,'ตั้งค่าคะแนนอบรม 3 ขั้นแล้ว')}catch(e){}};
+NS.deleteCountRule=async i=>{NS.toast('เพื่อรักษาประวัติคะแนนเดิม ให้แก้ไขและกำหนดเกณฑ์ที่ใช้งานแทนการลบ',true)};
+const AWARD_LEVELS=['โรงเรียน','กลุ่มโรงเรียน','เขตพื้นที่การศึกษา','จังหวัด','ภาค','ประเทศ','นานาชาติ'];
+function renderAwardLevelSettings(){const a=S.data.awardRules||[];return `<div class="card"><h2>กำหนดระดับผลงานรางวัลและรายการประเมิน</h2><p class="muted">สร้างความเชื่อมโยงระหว่างระดับรางวัลกับรายการเกณฑ์คะแนน สามารถกำหนดมากกว่าหนึ่งรายการต่อระดับได้</p><div class="grid2"><label class="field"><span>ระดับผลงานรางวัล</span><select class="input" id="ac-level" onchange="NS.awardCustomLevel()">${AWARD_LEVELS.map(x=>`<option value="${attr(x)}">${esc(x)}</option>`).join('')}<option value="__custom">อื่น ๆ (ระบุเอง)</option></select></label><label class="field"><span>ระดับรางวัลอื่น ๆ</span><input class="input" id="ac-custom" placeholder="ระบุชื่อระดับ" disabled></label></div><div class="grid2">${ruleCategorySelect('ac-category','NS.awardRuleItems()')}<label class="field"><span>รายการประเมิน / คะแนนตามเกณฑ์</span><select id="ac-item" class="input"></select></label></div><div class="row">${btn('เพิ่มรายการระดับรางวัล','NS.saveAwardRule()','gold','')}</div></div><div class="card"><h2>ระดับรางวัลที่กำหนดไว้</h2>${renderTable(['ระดับรางวัล','หมวดหมู่','รายการประเมิน','คะแนน','จัดการ'],a.map((x,i)=>[esc(x.level),esc(x.category),esc(x.item),scoreLabel(S.data.criteria.find(c=>c.category===x.category&&c.item===x.item)?.score||0),btn('ลบ',`NS.deleteAwardRule(${i})`,'red')]),'ยังไม่ได้กำหนดเกณฑ์รางวัล')}</div>`}
+NS.awardCustomLevel=()=>{$('ac-custom').disabled=val('ac-level')!=='__custom';if(!$('ac-custom').disabled)$('ac-custom').focus()};
+NS.awardRuleItems=()=>{const el=$('ac-item');if(!el)return;el.innerHTML=countPositiveCriteria(val('ac-category')).map(x=>`<option value="${attr(x.item)}">${esc(x.item)} (+${x.score} คะแนน)</option>`).join('')};
+NS.saveAwardRule=async()=>{const level=val('ac-level')==='__custom'?val('ac-custom').trim():val('ac-level'),d={level,category:val('ac-category'),item:val('ac-item')};if(!d.level||!d.item){NS.toast('กรุณาระบุระดับรางวัลและรายการประเมิน',true);return}try{await NS.call('saveAwardRule',d,'เพิ่มเกณฑ์รางวัลแล้ว')}catch(e){}};
+NS.deleteAwardRule=async i=>{const x=S.data.awardRules[i];if(x&&confirm('ยืนยันลบการจับคู่ '+x.level+' / '+x.item+' ?'))try{await NS.call('deleteAwardRule',x,'ลบเกณฑ์รางวัลแล้ว')}catch(e){}};
+function renderVolunteerSettings(){const r=S.data.volunteerRule;return `<div class="card"><h2>ตั้งค่าเกณฑ์คะแนนงานจิตอาสา</h2><p class="muted">เลือกเกณฑ์ด้านบวกที่ใช้กับงานจิตอาสาเพียงหนึ่งรายการต่อระบบ กำหนดค่าเริ่มต้นครั้งละ 1 คะแนน และเพดานรวม 10 คะแนนต่อคน • ให้คะแนนหลังผ่านการพิจารณาเท่านั้น</p><div class="grid2">${ruleCategorySelect('vc-category','NS.volunteerRuleItems()')}<label class="field"><span>รายการเกณฑ์ที่ใช้คิดคะแนนอัตโนมัติ</span><select id="vc-item" class="input"></select></label><label class="field"><span>คะแนนต่อครั้งที่ผ่านพิจารณา</span><input id="vc-per" class="input" type="number" min="0.01" max="100" step="0.01" value="${r?.per||1}"></label><label class="field"><span>คะแนนสูงสุดต่อผู้ใช้</span><input id="vc-max" class="input" type="number" min="0.01" max="10000" step="0.01" value="${r?.max||10}"></label></div><div class="row">${btn('บันทึกเกณฑ์จิตอาสา','NS.saveVolunteerRule()','gold','')}</div>${r?`<div class="alert">ปัจจุบัน: ${esc(r.item)} · ${esc(r.category)} · ครั้งละ ${r.per} คะแนน · สูงสุด ${r.max} คะแนน</div>`:'<div class="alert">ยังไม่ได้ตั้งค่าเกณฑ์จิตอาสา จึงยังไม่เปิดให้บันทึก</div>'}</div>`}
+NS.volunteerRuleItems=()=>{const el=$('vc-item');if(!el)return;el.innerHTML=countPositiveCriteria(val('vc-category')).map(x=>`<option value="${attr(x.item)}">${esc(x.item)}</option>`).join('')};
+NS.saveVolunteerRule=async()=>{const d={category:val('vc-category'),item:val('vc-item'),per:Number(val('vc-per')),max:Number(val('vc-max'))};if(!d.item||!Number.isFinite(d.per)||!Number.isFinite(d.max)||d.per<=0||d.max<d.per){NS.toast('กรุณากรอกคะแนนต่อครั้งและคะแนนสูงสุดให้ถูกต้อง',true);return}try{await NS.call('saveVolunteerRule',d,'บันทึกเกณฑ์จิตอาสาแล้ว')}catch(e){}};
+NS.criterionEditor=i=>{const x=S.data.criteria[i],cats=S.data.categories;S._editingCriterion=x?{item:x.item,category:x.category}:null;NS.modal(x?'แก้ไขเกณฑ์คะแนน':'เพิ่มเกณฑ์คะแนน',`<label class="field"><span>หมวดหมู่</span><select id="cr-cat" class="input">${cats.map(c=>`<option value="${attr(c)}" ${x?.category===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label>${field('รายการประเมิน','cr-item','ระบุรายการประเมิน','text',x?.item||'')}${field('คะแนนด้านบวก (+) หรือด้านลบ (−)','cr-score','เช่น 5 หรือ -3','number',x?.score??'')}<div class="row">${btn('บันทึก','NS.saveCriterion()','gold','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}</div>`)};
+NS.saveCriterion=async()=>{const d={category:val('cr-cat'),item:val('cr-item'),score:Number(val('cr-score')),...(S._editingCriterion?{originalItem:S._editingCriterion.item,originalCategory:S._editingCriterion.category}:{})};NS.closeModal();try{await NS.call('saveCriterion',d)}catch(e){}};
+NS.deleteCriterion=async i=>{const x=S.data.criteria[i];if(!x)return;if(confirm('ยืนยันลบรายการประเมิน '+x.item+'?'))try{await NS.call('deleteCriterion',x)}catch(e){}};
+NS.saveMax=async()=>{const list=S.data.categories.map((category,i)=>({category,max:Number(val('max-'+i))}));NS.busy(true);try{for(const x of list)await api('setMax',x);S.data=await api('init');NS.render();NS.toast('บันทึกคะแนนเต็มเรียบร้อย')}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}};
+function renderUsersAdmin(){return `<div class="card"><div class="row space"><h2>ข้อมูลผู้ใช้ในระบบ</h2>${btn('+ เพิ่มข้อมูลผู้ใช้ใหม่','NS.userEditor()','gold','')}</div><div class="filter-row"><input id="user-query" class="input" placeholder="ค้นหาชื่อ-สกุล / ชื่อผู้ใช้" oninput="NS.searchUsers(this.value)"></div><div id="users-table">${userTable('')}</div></div>`}
+function userTable(q){q=q.trim().toLowerCase();return renderTable(['ชื่อ-สกุล / ตำแหน่ง','กลุ่มสาระ','ชื่อผู้ใช้','บทบาท','จัดการ'],S.data.users.filter(x=>x.name.toLowerCase().includes(q)||x.username.toLowerCase().includes(q)).map(x=>[esc(x.name)+'<br><small>'+esc(x.position)+'</small>',esc(x.group),esc(x.username),esc(x.role),btn('แก้ไข',"NS.userEditor('"+encodeURIComponent(x.username)+"')")+' '+btn('ลบ',"NS.deleteUser('"+encodeURIComponent(x.username)+"')",'red')]))}
+NS.searchUsers=q=>{$('users-table').innerHTML=userTable(q)};
+NS.userEditor=username=>{const x=S.data.users.find(v=>v.username===decodeURIComponent(username||''));S._userOriginal=x?.username||'';NS.modal(x?'แก้ไขข้อมูลผู้ใช้':'เพิ่มผู้ใช้ใหม่',`<div class="grid2">${field('ชื่อ-สกุล','u-name','ชื่อ-สกุล','text',x?.name||'')}${field('ตำแหน่ง','u-position','ตำแหน่ง','text',x?.position||'')}${field('กลุ่มสาระการเรียนรู้ / สายงาน','u-group','กลุ่มสาระ','text',x?.group||'')}${field('ชื่อผู้ใช้','u-username','ชื่อผู้ใช้','text',x?.username||'')}${field('รหัสผ่าน '+(x?'(ว่างไว้หากไม่เปลี่ยน)':''),'u-password','อย่างน้อย 8 ตัวอักษร','password')}<label class="field"><span>บทบาท</span><select id="u-role" class="input">${S.data.roles.map(r=>`<option value="${attr(r)}" ${x?.role===r?'selected':''}>${esc(r)}</option>`).join('')}</select></label></div>${btn('บันทึกข้อมูลผู้ใช้','NS.saveUser()','gold','')}`)};
+NS.saveUser=async()=>{const p=val('u-password');if(p&&p.length<8){NS.toast('รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร',true);return}const data={name:val('u-name'),position:val('u-position'),group:val('u-group'),username:val('u-username'),passwordHash:p?await digest(p):'',role:val('u-role'),original:S._userOriginal};NS.closeModal();try{await NS.call('saveUser',data)}catch(e){}};
+NS.deleteUser=async n=>{const username=decodeURIComponent(n);if(confirm('ยืนยันลบบัญชี '+username+'?'))try{await NS.call('deleteUser',{username})}catch(e){}};
+function renderAllowed(){return `<div class="card"><h2>หมวดหมู่และรายการประเมินที่บทบาท User ใช้งานได้</h2><p class="muted" style="margin-bottom:15px">ติ๊กถูกเพื่อเปิดให้ผู้ใช้ทั่วไปส่งผลงานสำหรับรายการนั้น ระบบบันทึกค่าแยกตามรายการประเมิน</p><div class="checklist">${S.data.criteria.map((x,i)=>{const enabled=S.data.allowed.some(a=>a.category===x.category&&a.item===x.item&&a.enabled);return `<label><input type="checkbox" ${enabled?'checked':''} onchange="NS.allowCriterion(${i},this.checked)"><span style="flex:1">${esc(x.item)}<br><small class="muted">${esc(x.category)}</small></span>${scoreLabel(x.score)}</label>`}).join('')||'<p class="empty">กรุณากำหนดเกณฑ์คะแนนก่อน</p>'}</div></div>`}
+NS.allowCriterion=async(i,enabled)=>{const x=S.data.criteria[i];try{await NS.call('allowCriterion',{category:x.category,item:x.item,enabled},'อัปเดตสิทธิรายการประเมินแล้ว')}catch(e){}};
+NS.openProfile=()=>{const u=S.data.user;NS.modal('เปลี่ยนชื่อผู้ใช้และรหัสผ่าน',`${field('ชื่อผู้ใช้ใหม่','profile-name','ชื่อผู้ใช้','text',u.username)}${field('รหัสผ่านใหม่ (เว้นว่างไว้หากไม่เปลี่ยน)','profile-pass','อย่างน้อย 8 ตัวอักษร','password')}<div class="alert">ระบบจะให้ออกจากระบบหลังบันทึกและเข้าสู่ระบบใหม่</div>${btn('บันทึกการเปลี่ยนแปลง','NS.saveProfile()','gold','')}`)};
+NS.saveProfile=async()=>{const d={username:val('profile-name'),passwordHash:val('profile-pass')?await digest(val('profile-pass')):''};NS.busy(true);try{if(val('profile-pass')&&val('profile-pass').length<8)throw Error('รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร');await api('profile',d);NS.closeModal();NS.logout();NS.toast('เปลี่ยนข้อมูลแล้ว กรุณาเข้าสู่ระบบใหม่')}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}};
+function availableWorkCriteria(){return S.data.user.role==='User'?S.data.criteria.filter(x=>S.data.allowed.some(a=>a.category===x.category&&a.item===x.item&&a.enabled)):S.data.criteria}
+function availableTrainingCriteria(){const rules=S.data.countRules||[];return availableWorkCriteria().filter(x=>x.score>0&&rules.some(r=>r.category===x.category&&r.item===x.item&&(r.active||(!r.hasActive&&rules.filter(z=>z.category===r.category).length===1))))}
+function availableAwardRules(){return (S.data.awardRules||[]).filter(r=>availableWorkCriteria().some(x=>x.category===r.category&&x.item===r.item&&x.score>0))}
+function availableVolunteerRule(){const r=S.data.volunteerRule;return r&&availableWorkCriteria().some(x=>x.category===r.category&&x.item===r.item&&x.score>0)?r:null}
+NS.openWork=()=>{
+  const trainings=availableTrainingCriteria(),awards=availableAwardRules(),volunteer=availableVolunteerRule();
+  if(!trainings.length&&!awards.length&&!volunteer){NS.toast('ยังไม่มีเกณฑ์อบรม รางวัล หรืองานจิตอาสาที่เปิดให้ใช้งาน กรุณาติดต่อผู้ดูแลระบบ',true);return}
+  NS.releaseAwardPreview();S.workTab=trainings.length?'training':awards.length?'award':'volunteer';
+  const cats=[...new Set(trainings.map(x=>x.category))],levels=[...new Set(awards.map(x=>x.level))];
+  NS.modal('บันทึกผลการปฏิบัติงาน',`<div class="work-kind-tabs"><button id="tab-training" type="button" class="tab" onclick="NS.workTabChange('training')" ${!trainings.length?'disabled':''}>1. ประชุม/อบรม/สัมมนาพัฒนาวิชาชีพ</button><button id="tab-award" type="button" class="tab" onclick="NS.workTabChange('award')" ${!awards.length?'disabled':''}>2. ผลงานรางวัล</button><button id="tab-volunteer" type="button" class="tab" onclick="NS.workTabChange('volunteer')" ${!volunteer?'disabled':''}>3. งานจิตอาสา</button></div>
+  <section id="work-training" class="work-form-panel"><label class="field"><span>หมวดหมู่ตามเกณฑ์อบรม</span><select id="w-category" class="input" onchange="NS.workItems()">${cats.map(c=>`<option value="${attr(c)}">${esc(c)}</option>`).join('')}</select></label><div class="award-points" id="work-count-info"></div>
+  ${field('ชื่องานหรือโครงการ','w-title','ชื่องาน / โครงการ')}${field('หน่วยงานที่จัด','w-agency','หน่วยงาน')}${field('เริ่มดำเนินงาน','w-start','','date')}${field('สิ้นสุดการดำเนินงาน','w-end','','date')}<label class="field"><span>รายละเอียดการปฏิบัติงาน</span><textarea id="w-details" placeholder="อธิบายภารกิจที่ดำเนินการ"></textarea></label><label class="field"><span>ผลการปฏิบัติงาน</span><textarea id="w-result" placeholder="ระบุผลสัมฤทธิ์"></textarea></label><label class="field"><span>แนบภาพหลักฐาน (สูงสุด 3 รูป)</span><input id="w-photos" class="input" type="file" accept="image/*" multiple><small class="muted">ย่อภาพอัตโนมัติและอัปโหลดเร็วขึ้น · จัดเก็บเป็นลิงก์ Google Drive</small></label><div class="row">${btn('บันทึกและส่งพิจารณา','NS.saveWork()','gold','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}</div></section>
+  <section id="work-award" class="work-form-panel"><label class="field"><span>เลือกผลงานระดับ</span><select id="aw-level" class="input" onchange="NS.awardLevelChanged()">${levels.map(c=>`<option value="${attr(c)}">${esc(c)}</option>`).join('')}</select></label><div class="grid2"><label class="field"><span>รายการประเมินตามระดับรางวัล</span><select id="aw-item" class="input" onchange="NS.awardScoreChanged()"></select></label><div class="award-points" id="aw-score">คะแนนตามเกณฑ์</div></div>
+  ${field('ชื่อรางวัล / ชื่อผลงาน','aw-title','ระบุชื่อรางวัลที่ได้รับ')}${field('หน่วยงานที่จัด','aw-agency','หน่วยงานผู้มอบรางวัล')}${field('ระหว่างวันที่ (เริ่มต้น)','aw-start','','date')}${field('ระหว่างวันที่ (สิ้นสุด)','aw-end','','date')}
+  <label class="field"><span>รูปหลักฐาน / เกียรติบัตร / โล่รางวัล (อย่างน้อย 3 รูป)</span><input id="aw-photos" class="input" type="file" accept="image/*" multiple onchange="NS.previewAwardPhotos()"><small class="muted">รองรับ 3–12 รูปต่อผลงาน · ภาพแสดงตัวอย่างก่อนส่ง · ย่อไฟล์และส่งขึ้น Google Drive เป็นชุด</small></label><div id="aw-photo-count" class="muted">ยังไม่ได้เลือกรูปภาพ</div><div id="aw-photo-preview" class="award-preview" aria-live="polite"></div><div class="row">${btn('บันทึกผลงานรางวัลและส่งพิจารณา','NS.saveWork()','gold','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}</div></section>
+  <section id="work-volunteer" class="work-form-panel"><div class="award-points">${volunteer?`เกณฑ์: ${esc(volunteer.item)} · เมื่อผ่านพิจารณา ครั้งละ ${volunteer.per} คะแนน สูงสุด ${volunteer.max} คะแนนต่อคน`:'ยังไม่ได้กำหนดเกณฑ์จิตอาสา'}</div>${field('ชื่อกิจกรรม','vo-title','ระบุชื่อกิจกรรม')}${field('สถานที่','vo-location','สถานที่จัดกิจกรรม')}${field('หน่วยงานที่จัด','vo-agency','หน่วยงานที่จัด')}${field('ระหว่างวันที่ (เริ่มต้น)','vo-start','','date')}${field('ระหว่างวันที่ (สิ้นสุด)','vo-end','','date')}<label class="field"><span>รูปหลักฐาน / เกียรติบัตร / โล่รางวัล (อย่างน้อย 3 รูป)</span><input id="vo-photos" class="input" type="file" accept="image/*" multiple onchange="NS.previewVolunteerPhotos()"><small class="muted">รองรับ 3–12 รูป · มีตัวอย่างก่อนส่ง · จัดเก็บเป็นลิงก์ Google Drive</small></label><div id="vo-photo-count" class="muted">ยังไม่ได้เลือกรูปภาพ</div><div id="vo-photo-preview" class="award-preview" aria-live="polite"></div><div class="row">${btn('บันทึกงานจิตอาสาและส่งพิจารณา','NS.saveWork()','gold','')} ${btn('ยกเลิก','NS.closeModal()','gray','')}</div></section>`);
+  NS.workItems();NS.awardLevelChanged();NS.workTabChange(S.workTab);
+};
+NS.workTabChange=t=>{if(!$('work-'+t))return;S.workTab=t;for(const name of ['training','award','volunteer']){$('work-'+name).hidden=name!==t;$('tab-'+name)?.classList.toggle('active',name===t)}};
+NS.workItems=()=>{NS.workCountInfo()};
+NS.workCountInfo=()=>{const cat=val('w-category'),c=availableTrainingCriteria().find(x=>x.category===cat),rule=(S.data.countRules||[]).find(r=>r.category===cat&&r.item===c?.item),approved=(S.data.work||[]).filter(x=>x.username===S.data.user.username&&x.kind==='training'&&x.status==='ผ่าน'&&x.category===cat).length,el=$('work-count-info');if(el)el.textContent=rule&&c?`เกณฑ์อัตโนมัติ: ${c.item} • ผ่านพิจารณาแล้ว ${approved} ครั้ง • ครั้งที่ 1 = ${rule.stage[0]}, ครั้งที่ 2 = ${rule.stage[1]}, ครั้งที่ 3 เป็นต้นไป = ${rule.stage[2]} คะแนน • คะแนนปัจจุบัน ${approved?rule.stage[Math.min(approved,3)-1]:0} (ไม่สะสมซ้ำ)`:'ยังไม่มีเกณฑ์อบรมที่เปิดใช้งานสำหรับหมวดนี้';};
+NS.awardLevelChanged=()=>{const rules=availableAwardRules().filter(r=>r.level===val('aw-level')),el=$('aw-item');if(!el)return;el.innerHTML=rules.map(r=>`<option value="${attr(r.category+'\u001f'+r.item)}">${esc(r.item)} · ${esc(r.category)}</option>`).join('');NS.awardScoreChanged()};
+NS.awardScoreChanged=()=>{const [category,item]=val('aw-item').split('\u001f'),crit=S.data.criteria.find(x=>x.category===category&&x.item===item);if($('aw-score'))$('aw-score').textContent=crit?`เมื่อผ่านการพิจารณาจะได้รับ +${crit.score} คะแนน`:'ยังไม่ได้กำหนดคะแนน';};
+NS.releaseAwardPreview=()=>{(S.awardPreviewUrls||[]).forEach(url=>URL.revokeObjectURL(url));S.awardPreviewUrls=[];(S.volunteerPreviewUrls||[]).forEach(url=>URL.revokeObjectURL(url));S.volunteerPreviewUrls=[]};
+NS.previewAwardPhotos=()=>{NS.releaseAwardPreview();const files=[...($('aw-photos')?.files||[])],out=$('aw-photo-preview');if(!out)return;const valid=files.length>=3&&files.length<=12&&files.every(f=>f.type.startsWith('image/'));$('aw-photo-count').textContent=files.length?`เลือกแล้ว ${files.length} รูป ${valid?'✓ ครบตามจำนวน':'(ต้องเป็นรูปภาพ 3–12 รูป)'}`:'ยังไม่ได้เลือกรูปภาพ';out.innerHTML=files.slice(0,12).map((f,i)=>{const url=URL.createObjectURL(f);S.awardPreviewUrls.push(url);return `<figure><img src="${attr(url)}" alt="หลักฐานรูปที่ ${i+1}"><figcaption>${esc(f.name)}</figcaption></figure>`}).join('');};
+NS.previewVolunteerPhotos=()=>{(S.volunteerPreviewUrls||[]).forEach(url=>URL.revokeObjectURL(url));S.volunteerPreviewUrls=[];const files=[...($('vo-photos')?.files||[])],out=$('vo-photo-preview');if(!out)return;const valid=files.length>=3&&files.length<=12&&files.every(f=>f.type.startsWith('image/'));$('vo-photo-count').textContent=files.length?`เลือกแล้ว ${files.length} รูป ${valid?'✓ ครบตามจำนวน':'(ต้องเป็นรูปภาพ 3–12 รูป)'}`:'ยังไม่ได้เลือกรูปภาพ';out.innerHTML=files.slice(0,12).map((f,i)=>{const url=URL.createObjectURL(f);S.volunteerPreviewUrls.push(url);return `<figure><img src="${attr(url)}" alt="หลักฐานจิตอาสารูปที่ ${i+1}"><figcaption>${esc(f.name)}</figcaption></figure>`}).join('');};
+// NS360 v27: ย่อภาพเพียงครั้งเดียวบนอุปกรณ์ แล้วอัปโหลดเป็นชุด (Google Apps Script Fast)
+async function compressImage(file){
+ if(!file||!String(file.type||'').startsWith('image/'))throw Error('รองรับเฉพาะรูปภาพ');
+ if(file.size>15*1024*1024)throw Error('ภาพใหญ่เกิน 15 MB กรุณาลดขนาดภาพก่อน');
+ const url=URL.createObjectURL(file);
+ let img;
+ try{
+  img=await new Promise((resolve,reject)=>{
+   const node=new Image();node.onload=()=>resolve(node);
+   node.onerror=()=>reject(Error('เบราว์เซอร์เปิดรูปนี้ไม่ได้ กรุณาใช้ JPEG หรือ PNG'));
+   node.src=url;
+  });
+  // ลดขนาดสูงสุดก่อนแปลง เพื่อลดข้อมูลจากรูปถ่ายมือถือขนาดใหญ่
+  const scale=Math.min(1,1200/Math.max(img.naturalWidth||img.width,img.naturalHeight||img.height));
+  const c=document.createElement('canvas');
+  c.width=Math.max(1,Math.round((img.naturalWidth||img.width)*scale));
+  c.height=Math.max(1,Math.round((img.naturalHeight||img.height)*scale));
+  const ctx=c.getContext('2d',{alpha:false});if(!ctx)throw Error('อุปกรณ์ไม่รองรับการย่อรูป');
+  ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);
+  ctx.drawImage(img,0,0,c.width,c.height);
+  let blob;
+  for(const quality of [.70,.60,.50]){
+   blob=await new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(Error('บีบอัดรูปภาพไม่สำเร็จ')),'image/jpeg',quality));
+   if(blob.size<=300000)break;
+  }
+  if(blob.size>335000)throw Error('ไฟล์รูปยังมีขนาดใหญ่หลังบีบอัด กรุณาลดขนาดภาพแล้วลองอีกครั้ง');
+  return await new Promise((resolve,reject)=>{
+   const reader=new FileReader();reader.onload=()=>resolve(String(reader.result).split(',')[1]);
+   reader.onerror=()=>reject(Error('อ่านไฟล์รูปภาพไม่สำเร็จ'));
+   reader.readAsDataURL(blob);
+  });
+ }finally{URL.revokeObjectURL(url)}
+}
+// ใช้เฉพาะการโฮสต์ภายนอก: JSONP ไม่สามารถส่งรูปเป็นชุดใหญ่ได้
+async function uploadPreparedLegacy(encoded,i,total){
+ const partSize=3000,n=Math.ceil(encoded.length/partSize);
+ const id='ns360_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+ if(n>151)throw Error('ภาพที่ '+i+' ใหญ่เกินขนาดที่ระบบภายนอกรองรับ');
+ let next=0,done=0;
+ async function worker(){while(next<n){const k=next++;
+  const d={id,index:k,chunk:encoded.slice(k*partSize,(k+1)*partSize)};
+  let successful=false;
+  for(let attempt=0;attempt<2;attempt++){
+   try{await api('uploadChunk',d);successful=true;break}catch(error){
+    if(attempt||/สิทธิ์|หมดอายุ|ไม่ถูกต้อง/.test(error.message))throw error;
+    await new Promise(ok=>setTimeout(ok,400));
+   }
+  }
+  if(!successful)throw Error('อัปโหลดส่วนของรูปไม่สำเร็จ');
+  done++;NS.busy(true,`กำลังส่งภาพ ${i}/${total} (${done}/${n} ส่วน)`);
+ }}
+ await Promise.all(Array.from({length:Math.min(2,n)},worker));
+ const r=await api('finishUpload',{id,count:n,mime:'image/jpeg'});return r.url;
+}
+async function uploadPhotosFast(input){
+ const files=Array.from(input||[]),n=files.length;
+ if(!n)return [];
+ if(n>12)throw Error('อัปโหลดได้สูงสุด 12 รูปต่อครั้ง');
+ const compressed=new Array(n);let nextEncode=0,encodedCount=0;
+ NS.busy(true,`กำลังเตรียมรูปภาพ 0/${n}`);
+ // เตรียมภาพทีละ 2 เพื่อลดการใช้ RAM บนสมาร์ทโฟน
+ await Promise.all(Array.from({length:Math.min(2,n)},async()=>{
+  while(nextEncode<n){const i=nextEncode++;
+   compressed[i]=await compressImage(files[i]);encodedCount++;
+   NS.busy(true,`ย่อรูปภาพแล้ว ${encodedCount}/${n}`);
+  }
+ }));
+ const urls=new Array(n);
+ if(NS_NATIVE){
+  const batches=[];
+  for(let i=0;i<n;i+=3)batches.push({first:i,items:compressed.slice(i,i+3).map(encoded=>({encoded,mime:'image/jpeg'}))});
+  let nextBatch=0,uploaded=0;
+  // สองคำขอพร้อมกัน ไม่สร้างคำขอมากเกินสำหรับผู้ใช้หลายสิบคน
+  await Promise.all(Array.from({length:Math.min(2,batches.length)},async()=>{
+   while(nextBatch<batches.length){const batch=batches[nextBatch++];
+    const r=await api('uploadBatch',{photos:batch.items});
+    if(!Array.isArray(r?.urls)||r.urls.length!==batch.items.length||r.urls.some(x=>!x))throw Error('เซิร์ฟเวอร์ตอบกลับลิงก์รูปภาพไม่ครบ');
+    r.urls.forEach((url,j)=>{urls[batch.first+j]=url});uploaded+=r.urls.length;
+    NS.busy(true,`บันทึกรูปขึ้น Google Drive แล้ว ${uploaded}/${n}`);
+   }
+  }));
+ }else{
+  // สำหรับเว็บภายนอกคงเส้นทาง JSONP เดิม แต่ลดขนาดภาพและส่งส่วนย่อยพร้อมกัน
+  let nextFile=0;
+  await Promise.all(Array.from({length:Math.min(2,n)},async()=>{
+   while(nextFile<n){const i=nextFile++;urls[i]=await uploadPreparedLegacy(compressed[i],i+1,n)}
+  }));
+ }
+ return urls;
+}
+async function uploadPhoto(file,i){return (await uploadPhotosFast([file]))[0]}
+NS.saveWork=async()=>{
+ const kind=S.workTab;
+ let data,files;
+ try{
+  if(kind==='award'){
+   const [category,item]=val('aw-item').split('\u001f');
+   data={kind:'award',level:val('aw-level'),category,item,title:val('aw-title'),agency:val('aw-agency'),start:isoFrom('aw-start'),end:isoFrom('aw-end')};
+   files=[...($('aw-photos')?.files||[])];
+   if(files.length<3||files.length>12)throw Error('กรุณาแนบรูปหลักฐานอย่างน้อย 3 รูป และไม่เกิน 12 รูป');
+  }else if(kind==='volunteer'){
+   const rule=availableVolunteerRule();if(!rule)throw Error('ยังไม่ได้กำหนดเกณฑ์งานจิตอาสา');
+   data={kind:'volunteer',title:val('vo-title'),location:val('vo-location'),agency:val('vo-agency'),start:isoFrom('vo-start'),end:isoFrom('vo-end')};
+   files=[...($('vo-photos')?.files||[])];
+   if(!data.location.trim()||files.length<3||files.length>12)throw Error('กรุณาระบุสถานที่และแนบภาพหลักฐาน 3–12 รูป');
+  }else{
+   data={kind:'training',category:val('w-category'),title:val('w-title'),agency:val('w-agency'),start:isoFrom('w-start'),end:isoFrom('w-end'),details:val('w-details'),result:val('w-result')};
+   files=[...($('w-photos')?.files||[])];
+   if(files.length>3)throw Error('แนบภาพได้สูงสุด 3 รูป');
+   if(!data.details.trim()||!data.result.trim())throw Error('กรุณากรอกรายละเอียดและผลการปฏิบัติงาน');
+  }
+  if((kind==='award'&&(!data.category||!data.item))||(kind==='training'&&!data.category)||!data.title?.trim()||!data.agency?.trim())throw Error('กรุณากรอกข้อมูลที่จำเป็นให้ครบ');
+  if(data.start&&data.end&&data.start>data.end)throw Error('วันที่สิ้นสุดต้องไม่ก่อนวันที่เริ่ม');
+  if((kind==='award'||kind==='volunteer')&&(!data.start||!data.end))throw Error('กรุณาระบุช่วงวันเดือนปีให้ครบ');
+  if(files.some(f=>!f.type.startsWith('image/')))throw Error('รองรับเฉพาะไฟล์รูปภาพ');
+  if(files.some(f=>f.size>12*1024*1024))throw Error('รูปภาพบางไฟล์ใหญ่เกิน 12 MB');
+ }catch(e){NS.toast(e.message,true);return}
+ NS.busy(true);
+ try{
+  data.photos=[];
+  data.photos=await uploadPhotosFast(files);
+  await api('submitWork',data);
+  NS.closeModal();S.data=await api('init');NS.render();NS.toast('บันทึกและส่งผลงานเพื่อพิจารณาแล้ว');
+ }catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}
+};
+NS.excelTemplate=async type=>{try{await ensureExcelLibrary()}catch(e){NS.toast(e.message,true);return}const rows=type==='criteria'?[['รายการประเมิน','หมวดหมู่','คะแนน'],['สอนแทน','การจัดการเรียนการสอน',1],['คาบสอน','การจัดการเรียนการสอน',1],['ตัวอย่างด้านลบ','ระบบดูแลช่วยเหลือนักเรียน',-2]]:[['ชื่อผู้ใช้','จำนวนคาบต่อสัปดาห์'],['teacher001',18]];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),'Template');XLSX.writeFile(wb,type==='criteria'?'เทมเพลตเกณฑ์คะแนน_NS360.xlsx':'เทมเพลตจำนวนคาบสอน_NS360.xlsx')};
+NS.readExcel=async(input,type)=>{const file=input.files[0];if(!file)return;try{await ensureExcelLibrary();const buf=await file.arrayBuffer(),wb=XLSX.read(buf,{type:'array'}),rs=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:''});if(!rs.length)throw Error('ไม่พบรายการในไฟล์');if(type==='criteria'){const arr=rs.map(r=>({item:String(r['รายการประเมิน']||'').trim(),category:String(r['หมวดหมู่']||'').trim(),score:Number(r['คะแนน'])}));if(arr.some(x=>!x.item||!S.data.categories.includes(x.category)||!Number.isFinite(x.score)||!x.score))throw Error('คอลัมน์เกณฑ์คะแนนไม่ถูกต้อง');if(!confirm('ยืนยันนำเข้าเกณฑ์คะแนน '+arr.length+' รายการ?'))return;NS.busy(true);for(let i=0;i<arr.length;i++){NS.busy(true,`กำลังนำเข้าเกณฑ์ ${i+1}/${arr.length}`);await api('saveCriterion',arr[i])}}else{const arr=rs.map(r=>({username:String(r['ชื่อผู้ใช้']||'').trim(),count:Number(r['จำนวนคาบต่อสัปดาห์'])}));if(arr.some(x=>!S.data.users.some(u=>u.username===x.username)||!Number.isInteger(x.count)||x.count<0))throw Error('คอลัมน์ชื่อผู้ใช้หรือจำนวนคาบไม่ถูกต้อง');if(!confirm('ยืนยันนำเข้าจำนวนคาบสอน '+arr.length+' รายการ?'))return;NS.busy(true);await api('savePeriods',{items:arr})}S.data=await api('init');NS.render();NS.toast('นำเข้าข้อมูล '+rs.length+' รายการเรียบร้อย')}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}};
+
+// ===== v19: กิจกรรมหน้าเสาธง / เวรประจำวัน =====
+const DUTY_TYPES=['รับนักเรียนหน้าประตู เวลา 07.30 น.','ดูแลการรับประทานอาหารครบถ้วน','ดูแลความเรียบร้อยประจำวัน','ส่งนักเรียน'];
+const DUTY_STATUSES=['ปฏิบัติ','ไม่ปฏิบัติ','สาย','ลา','ไปราชการ'];
+const DUTY_DAYS=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+const dutyStatusOptions=(statusValue='')=>`<option value="">— ยังไม่บันทึก —</option>${DUTY_STATUSES.map(x=>`<option value="${attr(x)}" ${x===statusValue?'selected':''}>${esc(x)}</option>`).join('')}`;
+const dutyRuleLabel=(kind)=>{const r=(S.dutyData?.rules||S.data?.dutyRules||[]).find(x=>x.kind===kind);return r?(kind==='เวรประจำวัน'?`ตามเกณฑ์แต่ละรายการ · เต็ม ${r.max} คะแนน`:`(วันที่ได้สถานะคะแนน × ${r.max}) ÷ จำนวนวันเช็กชื่อทั้งหมด · ไม่เกิน ${r.max} คะแนน`):'กรุณากำหนดเกณฑ์ในหน้าตั้งค่า'};
+function renderDuty(){
+ const date=S.dutyDate||todayISO(),d=S.dutyData;
+ return `${headline('บันทึกการปฏิบัติหน้าที่และเวรประจำวัน','เช็กชื่อรายวัน • แก้ไขข้อมูลย้อนหลัง • คิดคะแนนตามเกณฑ์')}<div class="card"><div class="grid2">${dateField('วันที่บันทึก (พ.ศ.)','duty-date',date)}<div><span class="muted">วันตามวันที่เลือก</span><h2>${d?.date===date?esc(d.day):'—'}</h2></div></div><div class="tabs">${tab('แท็บ 1 · กิจกรรมหน้าเสาธง',"NS.dutySwitch('flag')",S.dutyTab==='flag')}${tab('แท็บ 2 · เวรประจำวัน',"NS.dutySwitch('daily')",S.dutyTab==='daily')}</div></div>${!d||d.date!==date?'<div class="card"><p class="muted">กำลังโหลดรายการของวันที่เลือก…</p></div>':S.dutyTab==='flag'?renderFlagAttendance():renderDailyDuty()}`;
+}
+function renderFlagAttendance(){const d=S.dutyData,saved=new Map(d.flag.map(x=>[x.username,x.status]));
+ const rows=(d.staff||[]).map((u,i)=>[String(i+1),esc(u.name),esc(u.group),`<select id="flag-st-${i}" aria-label="สถานะ ${attr(u.name)}">${dutyStatusOptions(saved.get(u.username)||'')}</select>`]);
+ return `<div class="card"><h2>กิจกรรมหน้าเสาธง</h2><p class="muted">${esc(dutyRuleLabel('หน้าเสาธง'))} · สถานะที่ได้คะแนน: ปฏิบัติ / ลา / ไปราชการ</p><div class="row">${btn('✓ เช็คมาทั้งหมด','NS.flagAllPresent()','soft')}${btn('ล้างสถานะทั้งหมด','NS.flagClear()','gray')}</div><div class="duty-table">${renderTable(['ลำดับ','ชื่อ-สกุล ครู','กลุ่มสาระ/สายงาน','สถานะ'],rows,'ไม่มีรายชื่อครู')}</div><div class="row" style="margin-top:16px">${btn('บันทึกกิจกรรมหน้าเสาธง','NS.saveFlagAttendance()','gold','')}</div><div class="alert">แก้ไขย้อนหลังได้โดยเลือกวันที่เดิมแล้วเปลี่ยนสถานะ การเช็กชื่อที่แก้ไขจะคำนวณคะแนนตามสัดส่วนใหม่อัตโนมัติ (คะแนนไม่เกินคะแนนเต็ม) โดยบันทึกในชีทกิจกรรมหน้าเสาธง (ชื่อครูคอลัมน์ A วันที่คอลัมน์ B เป็นต้นไป)</div></div>`;
+}
+function renderDailyDuty(){const d=S.dutyData,roster=d.roster||[];
+ return `<div class="card"><h2>เวรประจำวัน ${esc(d.day)} · ${esc(dateTH(d.date))} พ.ศ.</h2><p class="muted">${esc(dutyRuleLabel('เวรประจำวัน'))} · เฉพาะครูที่ได้รับมอบหมายเวรตามวันที่เลือก</p><div class="duty-check">${DUTY_TYPES.map((type,i)=>`<label><input type="checkbox" ${S.dutyTypes.has(type)?'checked':''} onchange="NS.dutyToggleType(${i},this.checked)">${esc(type)}</label>`).join('')}</div>${DUTY_TYPES.filter(t=>S.dutyTypes.has(t)).map(type=>{
+   const people=roster.filter(x=>x.type===type),history=new Map(d.duty.filter(x=>x.type===type).map(x=>[x.username,x.status]));
+   const rows=people.map((x,i)=>[String(i+1),esc(x.name),esc(x.group),`<select class="duty-status" data-type="${attr(type)}" data-username="${attr(x.username)}">${dutyStatusOptions(S._dutyDraft?.[type+'|'+x.username]??history.get(x.username)??'')}</select>`]);
+   return `<h3 style="margin-top:20px;color:#16538b">${esc(type)} (${people.length} คน)</h3><div class="duty-table">${renderTable(['ลำดับ','ครูผู้รับผิดชอบ','กลุ่มสาระ','สถานะ'],rows,'ยังไม่ได้กำหนดครูเวรประเภทนี้ในหน้าตั้งค่า')}</div>`;
+ }).join('')||'<div class="empty">โปรดเลือกประเภทเวรอย่างน้อยหนึ่งรายการ</div>'}<div class="row" style="margin-top:16px">${btn('บันทึกเวรประจำวัน','NS.saveDailyDuty()','gold','')}</div><div class="alert">ระบบบันทึกคะแนนเฉพาะสถานะ ปฏิบัติ / ลา / ไปราชการ ตามเกณฑ์ที่กำหนด ส่วนสถานะ สาย / ไม่ปฏิบัติ ไม่เพิ่มคะแนน</div></div>`;
+}
+NS.dutySwitch=tabName=>{S.dutyTab=tabName;S._dutyDraft={};NS.render()};
+NS.loadDutyData=async()=>{if(!S.data?.rights?.attendance)return;S.dutyDate=S.dutyDate||todayISO();const target=S.dutyDate;NS.busy(true,'กำลังโหลดรายชื่อครูและเวร');try{S.dutyData=await api('getDutyData',{date:target});S._dutyDraft={};NS.render()}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}};
+NS.dutyDateChanged=()=>{try{const date=isoFrom('duty-date');if(!date)return;if(date===S.dutyDate)return;S.dutyDate=date;S.dutyData=null;NS.render();NS.loadDutyData()}catch(e){NS.toast(e.message,true)}};
+NS.flagAllPresent=()=>{(S.dutyData?.staff||[]).forEach((u,i)=>{const el=$('flag-st-'+i);if(el)el.value='ปฏิบัติ'})};
+NS.flagClear=()=>{(S.dutyData?.staff||[]).forEach((u,i)=>{const el=$('flag-st-'+i);if(el)el.value=''})};
+NS.saveFlagAttendance=async()=>{const staff=S.dutyData?.staff||[],date=S.dutyDate;const items=staff.map((u,i)=>({username:u.username,status:$('flag-st-'+i)?.value||''}));if(!items.length)return;const selected=items.filter(x=>x.status).length;if(!confirm('ยืนยันบันทึกสถานะ '+selected+' คน วันที่ '+dateTH(date)+'? รายการที่ล้างสถานะจะถูกลบจากวันดังกล่าว'))return;NS.busy(true);try{const bundle=await api('mutateAndInit',{op:'saveFlagAttendance',args:{date,items}});if(bundle.delta)Object.assign(S.data,bundle.delta);S.dutyData=bundle.dutyData;NS.render();NS.toast('บันทึกกิจกรรมหน้าเสาธงและคำนวณคะแนนใหม่แล้ว')}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}};
+NS.dutyToggleType=(i,checked)=>{document.querySelectorAll('.duty-status').forEach(el=>{S._dutyDraft=S._dutyDraft||{};S._dutyDraft[el.dataset.type+'|'+el.dataset.username]=el.value});const type=DUTY_TYPES[i];checked?S.dutyTypes.add(type):S.dutyTypes.delete(type);NS.render()};
+NS.saveDailyDuty=async()=>{const date=S.dutyDate,items=[...document.querySelectorAll('.duty-status')].map(el=>({type:el.dataset.type,username:el.dataset.username,status:el.value}));if(!items.length){NS.toast('กรุณาเลือกประเภทเวรที่มีครูได้รับมอบหมาย',true);return}if(!confirm('ยืนยันบันทึกสถานะเวรประจำวัน '+items.length+' รายการ วันที่ '+dateTH(date)+'?'))return;NS.busy(true);try{const bundle=await api('mutateAndInit',{op:'saveDailyDuty',args:{date,items}});if(bundle.delta)Object.assign(S.data,bundle.delta);S.dutyData=bundle.dutyData;S._dutyDraft={};NS.render();NS.toast('บันทึกเวรประจำวันและปรับปรุงคะแนนแล้ว')}catch(e){NS.toast(e.message,true)}finally{NS.busy(false)}};
+function renderDutyAdmin(){const rules=S.data.dutyRules||[],flag=rules.find(x=>x.kind==='หน้าเสาธง')||{per:2,max:40,category:S.data.categories[3],item:'กิจกรรมหน้าเสาธง'},daily=rules.find(x=>x.kind==='เวรประจำวัน')||{max:20};
+ const crit=S.data.dutyCriteria||[];
+ return `${headline('ตั้งค่าเกณฑ์หน้าเสาธงและเวรประจำวัน','ใช้คะแนนเวรจากเกณฑ์คะแนนที่กำหนดไว้ในหมวดระบบดูแลช่วยเหลือนักเรียน')}
+ <div class="card"><h2>1. เกณฑ์กิจกรรมหน้าเสาธง</h2><div class="grid2"><label class="field"><span>สูตรคำนวณ</span><div class="alert">(จำนวนวันที่ได้รับคะแนน × คะแนนเต็ม) ÷ จำนวนวันที่เช็กชื่อทั้งหมด โดยสถานะ ปฏิบัติ / ลา / ไปราชการ เท่านั้นที่ได้รับคะแนน</div><input type="hidden" id="dset-per-0" value="${flag.per}"></label><label class="field"><span>คะแนนเต็ม</span><input class="input" id="dset-max-0" type="number" step="0.01" min="0.01" value="${flag.max}"></label><label class="field"><span>หมวดหมู่</span>${select('dset-cat-0',S.data.categories,flag.category)}</label><label class="field"><span>รายการประเมิน</span><input class="input" id="dset-item-0" value="${attr(flag.item)}"></label></div></div>
+ <div class="card"><h2>2. เกณฑ์เวรประจำวัน — 4 รายการ</h2><div class="alert">คะแนนของแต่ละจุดอ้างอิงชีท <b>เกณฑ์คะแนน</b> ในหมวด <b>ระบบดูแลช่วยเหลือนักเรียน</b> โดยรองรับชื่อหมวดในชีทเดิมที่มีคำว่า “การ” ด้วย การแก้ไขคะแนนในหน้านี้จะอัปเดตเกณฑ์คะแนนจริง ไม่สร้างเกณฑ์อีกชุดหนึ่ง</div>
+ ${renderTable(['ประเภทเวร','รายการเกณฑ์ที่เชื่อม','คะแนนต่อครั้ง','แก้ไข'],crit.map((c,i)=>[esc(c.type),c.found?esc(c.item):'<span class="scoreminus">ยังไม่พบเกณฑ์</span>',c.found?scoreLabel(c.score):'—',c.found?btn('แก้ไขคะแนน',`NS.editDutyCriterion(${i})`):'กรุณาเพิ่มเกณฑ์ในแท็บเกณฑ์คะแนน']))}
+ <label class="field" style="max-width:240px;margin-top:15px"><span>คะแนนเต็มสูงสุดของเวรประจำวัน (รวมทุกจุด)</span><input class="input" id="dset-max-1" type="number" step="0.01" min="0.01" value="${daily.max}"></label>
+ <p class="muted">สถานะ ปฏิบัติ / ลา / ไปราชการ ได้คะแนนตามเกณฑ์ของแต่ละจุด เมื่อบันทึกแล้วระบบจะคำนวณคะแนนสะสมใหม่โดยไม่ซ้ำ</p></div>
+ <div class="row">${btn('บันทึกเกณฑ์หน้าเสาธงและคะแนนเต็มเวร','NS.saveDutyRules()','gold','')}</div>`;
+}
+NS.editDutyCriterion=i=>{const c=(S.data.dutyCriteria||[])[i];if(!c?.found)return;NS.modal('แก้ไขคะแนนเวร: '+esc(c.type),`<p class="muted">รายการเกณฑ์: ${esc(c.item)}</p><label class="field"><span>คะแนนต่อครั้ง</span><input class="input" id="duty-criterion-score" type="number" min="0.01" step="0.01" value="${Number(c.score)}"></label><div class="row">${btn('บันทึกคะแนน','NS.saveDutyCriterion('+i+')','gold')}${btn('ยกเลิก','NS.closeModal()','gray')}</div>`)};
+NS.saveDutyCriterion=async i=>{const c=(S.data.dutyCriteria||[])[i],score=Number(val('duty-criterion-score'));if(!c||!Number.isFinite(score)||score<=0){NS.toast('คะแนนต้องเป็นจำนวนบวก',true);return}NS.closeModal();const original=S.data.criteria.find(x=>x.item===c.item&&(x.category==='ระบบดูแลช่วยเหลือนักเรียน'||x.category==='ระบบการดูแลช่วยเหลือนักเรียน'));if(!original){NS.toast('ไม่พบรายการเกณฑ์ที่อ้างอิง',true);return}try{await NS.call('saveCriterion',{item:original.item,category:original.category,originalItem:original.item,originalCategory:original.category,score},'อัปเดตเกณฑ์เวรและคะแนนสะสมแล้ว')}catch(e){}};
+NS.saveDutyRules=async()=>{const flag={kind:'หน้าเสาธง',per:Number(val('dset-per-0')),max:Number(val('dset-max-0')),category:val('dset-cat-0'),item:val('dset-item-0')},daily={kind:'เวรประจำวัน',per:1,max:Number(val('dset-max-1')),category:S.data.categories[1],item:'ตาม 4 รายการเกณฑ์เวร'};if(!flag.per||!flag.max||!flag.item||!flag.category||!daily.max){NS.toast('กรุณาระบุคะแนนให้ถูกต้อง',true);return}try{await NS.call('setDutyRules',{rules:[flag,daily]},'บันทึกเกณฑ์และคำนวณคะแนนใหม่แล้ว')}catch(e){}};
+// รายชื่อครูในชีทข้อมูลผู้ใช้ส่วนใหญ่ไม่ระบุตำแหน่ง/บทบาท จึงต้องไม่ใช้สองช่องนี้กรองรายชื่อ
+function rosterStaff(){return (S.data.users||[]).filter(u=>String(u.name||'').trim()&&String(u.username||'').trim()&&String(u.group||'').trim()&&!/^(?:รอง)?ผู้อำนวยการ/.test(String(u.position||'').trim()))}
+function rosterVisible(){const group=String(S.rosterGroup||'').trim(),q=String(S.rosterSearch||'').normalize('NFKC').trim().toLocaleLowerCase('th');return rosterStaff().filter(u=>(!group||String(u.group).trim()===group)&&(!q||`${u.name} ${u.username}`.normalize('NFKC').toLocaleLowerCase('th').includes(q)))}
+function renderRoster(){const teachers=rosterVisible(),all=teachers.length&&teachers.every(x=>S.rosterSelected.has(x.username)),records=(S.data.dutyRoster||[]).sort((a,b)=>DUTY_DAYS.indexOf(a.day)-DUTY_DAYS.indexOf(b.day)||DUTY_TYPES.indexOf(a.type)-DUTY_TYPES.indexOf(b.type)||a.name.localeCompare(b.name,'th'));return `${headline('จัดตารางเวรประจำวัน','สำหรับผู้ที่ได้รับสิทธิ์จัดตารางเวร · กำหนดได้หลายคน')}
+ <div class="grid2"><div class="card"><h2>1. เลือกวัน ประเภทเวร และครู</h2><div class="grid2"><label class="field"><span>วันในสัปดาห์</span><select id="roster-day" class="input" onchange="NS.rosterSelectChanged()">${DUTY_DAYS.map(d=>`<option value="${d}" ${S.rosterDay===d?'selected':''}>${d}</option>`).join('')}</select></label><label class="field"><span>จุดเวร</span><select id="roster-type" class="input" onchange="NS.rosterSelectChanged()">${DUTY_TYPES.map(t=>`<option value="${attr(t)}" ${S.rosterType===t?'selected':''}>${esc(t)}</option>`).join('')}</select></label><label class="field"><span>กลุ่มสาระ / สายงาน</span>${select('roster-group',groups(),S.rosterGroup,'ทุกกลุ่มสาระ').replace('<select ','<select onchange="NS.rosterGroupChanged()" ')}</label><label class="field"><span>ค้นหาชื่อครูหรือชื่อผู้ใช้</span><input id="roster-search" class="input" type="search" value="${attr(S.rosterSearch)}" placeholder="ค้นหารายชื่อ" oninput="NS.rosterSearchChanged(this.value)"></label></div>
+ <div class="row">${btn('กรองกลุ่มสาระ','NS.rosterGroupChanged()')}${btn('เลือกทั้งหมดที่แสดง','NS.rosterAll(true)')}${btn('ล้างที่เลือกในกลุ่ม','NS.rosterAll(false)','gray')}</div>
+ <label class="row" style="margin:12px 0"><input type="checkbox" ${all?'checked':''} onchange="NS.rosterAll(this.checked)"> เลือกทั้งหมดในผลการค้นหา (${teachers.length} คน)</label>
+ <p class="muted" style="margin:8px 0 5px">พบครูและบุคลากร ${teachers.length} คน จาก ${rosterStaff().length} คน</p><div class="duty-roster-list">${teachers.map(u=>`<label><input type="checkbox" ${S.rosterSelected.has(u.username)?'checked':''} onchange="NS.rosterPick('${encodeURIComponent(u.username)}',this.checked)"><span>${esc(u.name)}<br><small class="muted">${esc(u.group)} · ${esc(u.username)}</small></span></label>`).join('')||'<p class="muted" style="padding:12px">ไม่พบรายชื่อที่ตรงกับกลุ่มสาระหรือคำค้น กรุณาลองเลือกทุกกลุ่มสาระหรือล้างคำค้น</p>'}</div><p style="margin:12px 0">เลือกไว้ ${S.rosterSelected.size} คน สำหรับ ${esc(S.rosterDay)} · ${esc(S.rosterType)}</p>${btn('บันทึก/แก้ไขรายชื่อเวรของวันและจุดที่เลือก','NS.saveDutyRoster()','gold','')}</div>
+ <div class="card"><h2>2. นำเข้าตารางเวรด้วย Excel</h2><p class="muted">นำเข้าแบบเพิ่มหรืออัปเดตเฉพาะรายการ ไม่ลบตารางเวรอื่น • หัวคอลัมน์ที่ต้องมี: วันในสัปดาห์ / ประเภทเวร / ชื่อผู้ใช้</p><div class="row">${btn('↓ ดาวน์โหลดเทมเพลต Excel','NS.rosterExcelTemplate()')}<label class="btn soft small">↑ เลือกไฟล์ Excel<input type="file" accept=".xlsx,.xls" hidden onchange="NS.rosterReadExcel(this)"></label></div><div class="alert" style="margin-top:16px">กรณีต้องการแก้ไขวันหรือประเภทเวรของครูหนึ่งคน ให้ลบรายการเก่าแล้วบันทึกใหม่ หรือแก้ไขชุดเวรตามวัน/จุดจากฟอร์มด้านซ้าย</div><p id="roster-import-status" class="muted"></p></div></div>
+ <div class="card"><h2>3. ประวัติตารางเวร (${records.length} รายการ)</h2>${renderTable(['วัน','ประเภทเวร','ชื่อครู','กลุ่มสาระ','จัดการ'],records.map(r=>[esc(r.day),esc(r.type),esc(r.name),esc(r.group),`${btn('แก้ไข',`NS.rosterEdit('${encodeURIComponent(r.day)}','${encodeURIComponent(r.type)}')`)} ${btn('ลบ',`NS.rosterDelete('${encodeURIComponent(r.day)}','${encodeURIComponent(r.type)}','${encodeURIComponent(r.username)}')`,'red')}`]),'ยังไม่มีตารางเวร')}</div>`;}
+NS.rosterSelectChanged=()=>{S.rosterDay=val('roster-day');S.rosterType=val('roster-type');S.rosterSelected=new Set((S.data.dutyRoster||[]).filter(x=>x.day===S.rosterDay&&x.type===S.rosterType).map(x=>x.username));NS.render()};
+NS.rosterGroupChanged=()=>{S.rosterGroup=val('roster-group');NS.render()};
+NS.rosterSearchChanged=v=>{S.rosterSearch=v;const cur=document.activeElement?.selectionStart||v.length;NS.render();const input=$('roster-search');if(input){input.focus();input.setSelectionRange(Math.min(cur,v.length),Math.min(cur,v.length))}};
+NS.rosterPick=(username,checked)=>{username=decodeURIComponent(username);checked?S.rosterSelected.add(username):S.rosterSelected.delete(username)};
+NS.rosterAll=checked=>{rosterVisible().forEach(u=>checked?S.rosterSelected.add(u.username):S.rosterSelected.delete(u.username));NS.render()};
+NS.rosterEdit=(day,type)=>{S.rosterDay=decodeURIComponent(day);S.rosterType=decodeURIComponent(type);S.rosterSelected=new Set((S.data.dutyRoster||[]).filter(x=>x.day===S.rosterDay&&x.type===S.rosterType).map(x=>x.username));S.rosterSearch='';S.rosterGroup='';NS.render();window.scrollTo(0,0)};
+NS.saveDutyRoster=async()=>{const usernames=[...S.rosterSelected];if(!confirm('ยืนยันกำหนด '+S.rosterDay+' · '+S.rosterType+' จำนวน '+usernames.length+' คน? รายชื่อทั้งหมดของวันและจุดนี้จะถูกแทนที่'))return;try{await NS.call('setDutyRoster',{day:S.rosterDay,type:S.rosterType,usernames},'บันทึกตารางเวรแล้ว')}catch(e){}};
+NS.rosterDelete=async(day,type,username)=>{day=decodeURIComponent(day);type=decodeURIComponent(type);username=decodeURIComponent(username);const name=S.data.users.find(x=>x.username===username)?.name||username;if(!confirm('ยืนยันลบเวร '+day+' / '+type+' ของ '+name+'?'))return;try{await NS.call('deleteDutyRoster',{day,type,username},'ลบรายการเวรแล้ว');if(S.rosterDay===day&&S.rosterType===type)S.rosterSelected.delete(username);NS.render()}catch(e){}};
+NS.rosterExcelTemplate=async()=>{try{await ensureExcelLibrary()}catch(e){NS.toast(e.message,true);return}const wb=XLSX.utils.book_new(),data=[['วันในสัปดาห์','ประเภทเวร','ชื่อผู้ใช้'],['จันทร์',DUTY_TYPES[0],'teacher001'],['อังคาร',DUTY_TYPES[1],'teacher002']];XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(data),'ตารางเวร');XLSX.writeFile(wb,'เทมเพลตตารางเวรประจำวัน_NS360.xlsx')};
+NS.rosterReadExcel=async(input)=>{const file=input.files?.[0];if(!file)return;try{await ensureExcelLibrary();const wb=XLSX.read(await file.arrayBuffer(),{type:'array'}),values=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:''});if(!values.length||values.length>2000)throw Error('ไฟล์ต้องมีข้อมูล 1–2000 แถว');const validNames=new Set(S.data.users.map(u=>u.username));const seen=new Set();const items=values.map((r,i)=>{const day=String(r['วันในสัปดาห์']||'').trim(),type=String(r['ประเภทเวร']||'').trim(),username=String(r['ชื่อผู้ใช้']||'').trim();if(!DUTY_DAYS.includes(day)||!DUTY_TYPES.includes(type)||!validNames.has(username))throw Error('ข้อมูลไม่ถูกต้องใน Excel แถว '+(i+2));const key=[day,type,username].join('|');if(seen.has(key))throw Error('รายการซ้ำใน Excel แถว '+(i+2));seen.add(key);return {day,type,username}});if(!confirm('ยืนยันนำเข้า '+items.length+' รายการ? ระบบจะเพิ่มหรืออัปเดตรายการที่ตรงกัน โดยไม่ลบรายการอื่น'))return;
+ NS.busy(true,'กำลังนำเข้าตารางเวร');let count=0;try{for(let i=0;i<items.length;i+=20){const x=await api('importDutyRoster',{items:items.slice(i,i+20)});count+=x.count||0}Object.assign(S.data,await api('readDutyRoster'));NS.render();NS.toast('นำเข้าสำเร็จ '+count+' รายการ')}catch(e){Object.assign(S.data,await api('readDutyRoster'));NS.render();NS.toast('นำเข้าแล้ว '+count+' รายการก่อนเกิดข้อผิดพลาด: '+e.message,true)}finally{NS.busy(false)}}catch(e){NS.toast(e.message,true)}finally{input.value=''}};
+
+(async function start(){const name=localStorage.getItem('ns360_username');if(name)$('login-user').value=name;S.token=localStorage.getItem('ns360_token')||sessionStorage.getItem('ns360_token')||'';if(S.token){try{S.data=await api('init');$('login-view').classList.add('hidden');$('shell').classList.remove('hidden');NS.render()}catch(e){NS.logout()}}})();
+</script></body></html>
